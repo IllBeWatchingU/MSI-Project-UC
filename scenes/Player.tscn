@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://l2q8vmjedkst"]
+[gd_scene load_steps=6 format=3 uid="uid://l2q8vmjedkst"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_2shc1"]
+[ext_resource type="Texture2D" uid="uid://cfc3g53gmvy1g" path="res://assets/crosshair.png" id="2_qxn3v"]
+[ext_resource type="Script" path="res://scripts/PlayerInteraction.gd" id="3_b3pdj"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_gp2yb"]
 height = 1.75
@@ -13,6 +15,7 @@ script = ExtResource("1_2shc1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.874631, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_gp2yb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -23,3 +26,24 @@ shape = SubResource("CapsuleShape3D_wmfc0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.36648, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraHolder"]
+
+[node name="TextureRect" type="TextureRect" parent="CameraHolder"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_qxn3v")
+
+[node name="RayCast3D" type="RayCast3D" parent="CameraHolder"]
+target_position = Vector3(0, 0, -1)
+collision_mask = 4
+script = ExtResource("3_b3pdj")
