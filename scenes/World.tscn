@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://i0sfj7yfh75v"]
+
+[ext_resource type="PackedScene" uid="uid://l2q8vmjedkst" path="res://scenes/Player.tscn" id="1_hxym2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_sfclp"]
+size = Vector3(10, 0.5, 10)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ytgu4"]
+points = PackedVector3Array(-5, -0.25, -5, -5, 0.25, -5, 5, -0.25, -5, -5, -0.25, 5, -5, 0.25, 5, 5, 0.25, -5, 5, -0.25, 5, 5, 0.25, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vqp60"]
+size = Vector3(10, 3, 0.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tuhjd"]
+points = PackedVector3Array(5, 1.5, 0.25, 5, 1.5, -0.25, -5, 1.5, 0.25, 5, -1.5, 0.25, 5, -1.5, -0.25, -5, 1.5, -0.25, -5, -1.5, 0.25, -5, -1.5, -0.25)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hxeu8"]
+
+[sub_resource type="Sky" id="Sky_oke4f"]
+sky_material = SubResource("ProceduralSkyMaterial_hxeu8")
+
+[sub_resource type="Environment" id="Environment_eqgpk"]
+background_mode = 2
+sky = SubResource("Sky_oke4f")
+
+[node name="World" type="Node3D"]
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_sfclp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("ConvexPolygonShape3D_ytgu4")
+
+[node name="Wall" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.75)
+mesh = SubResource("BoxMesh_vqp60")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.75)
+shape = SubResource("ConvexPolygonShape3D_tuhjd")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_eqgpk")
+
+[node name="Player" parent="." instance=ExtResource("1_hxym2")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 10, 10)
