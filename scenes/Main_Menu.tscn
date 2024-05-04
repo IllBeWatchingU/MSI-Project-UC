@@ -1,0 +1,77 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxcqfix6rnkvj"]
+
+[ext_resource type="Script" path="res://scripts/MainMenuButtons.gd" id="1_jhplb"]
+[ext_resource type="PackedScene" uid="uid://i0sfj7yfh75v" path="res://scenes/World.tscn" id="2_pl37t"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.811765, 1, 1)
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -25.0
+offset_right = 208.0
+offset_bottom = 213.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+script = ExtResource("1_jhplb")
+sceneToLoad = ExtResource("2_pl37t")
+
+[node name="PlayButton" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Play
+"
+
+[node name="SettingsButton" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Settings
+"
+
+[node name="ExitButton" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Exit
+"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -385.0
+offset_top = 114.0
+offset_right = 385.0
+offset_bottom = 204.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 60
+text = "Układy Cyfrowe The Game"
+
+[connection signal="pressed" from="Buttons/PlayButton" to="Buttons" method="_on_play_button_pressed"]
+[connection signal="pressed" from="Buttons/SettingsButton" to="Buttons" method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Buttons/ExitButton" to="Buttons" method="_on_exit_button_pressed"]
