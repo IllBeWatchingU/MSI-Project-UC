@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_2shc1"]
 [ext_resource type="Texture2D" uid="uid://cfc3g53gmvy1g" path="res://assets/crosshair.png" id="2_qxn3v"]
-[ext_resource type="Script" path="res://scripts/PlayerInteraction.gd" id="3_b3pdj"]
+[ext_resource type="Script" path="res://scripts/InteractRaycast.gd" id="3_ejpgq"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_gp2yb"]
 height = 1.75
@@ -11,6 +11,7 @@ height = 1.75
 height = 1.75
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 4
 script = ExtResource("1_2shc1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -43,7 +44,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("2_qxn3v")
 
-[node name="RayCast3D" type="RayCast3D" parent="CameraHolder"]
-target_position = Vector3(0, 0, -1)
-collision_mask = 4
-script = ExtResource("3_b3pdj")
+[node name="InteractRaycast" type="RayCast3D" parent="CameraHolder"]
+target_position = Vector3(0, 0, -3)
+collision_mask = 2
+script = ExtResource("3_ejpgq")
