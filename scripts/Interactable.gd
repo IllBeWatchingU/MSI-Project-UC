@@ -12,7 +12,6 @@ func _ready():
 	interacted_material.albedo_color = Color("0000ff")
 	focused_material.albedo_color = Color("00ff00")
 
-
 func _on_focused(_interactor):
 	$MeshInstance3D.material_override = focused_material
 
