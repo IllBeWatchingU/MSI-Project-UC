@@ -6,5 +6,5 @@ extends Interactable
 func _on_interacted(_interactor):
 	if value.text == "0":
 		value.text = "1"
-	else:
+	elif value.text == "1":
 		value.text = "0"

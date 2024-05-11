@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://1rry81l46ffo"]
+[gd_scene load_steps=10 format=3 uid="uid://1rry81l46ffo"]
 
 [ext_resource type="PackedScene" uid="uid://l2q8vmjedkst" path="res://scenes/Player.tscn" id="1_23on8"]
-[ext_resource type="PackedScene" uid="uid://d383yyr156l1q" path="res://scenes/Interactable.tscn" id="2_l4ppa"]
-[ext_resource type="PackedScene" uid="uid://blvkqdr3pri4y" path="res://scenes/Multiplex16.tscn" id="3_y18l4"]
+[ext_resource type="PackedScene" uid="uid://cx7c52bhqab56" path="res://scenes/multiplexer level/Multiplex8.tscn" id="3_36lhk"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_sfclp"]
 size = Vector3(10, 0.5, 10)
@@ -97,8 +96,5 @@ environment = SubResource("Environment_eqgpk")
 transform = Transform3D(0.643135, -0.663161, 0.382877, 0, 0.5, 0.866025, -0.765753, -0.556971, 0.321568, 0.837949, 3.48198, 2.42873)
 light_energy = 1.914
 
-[node name="Interactable" parent="." instance=ExtResource("2_l4ppa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -4.5)
-
-[node name="Node3D" parent="." instance=ExtResource("3_y18l4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.20458, -4.41507)
+[node name="Multiplexer8" parent="." instance=ExtResource("3_36lhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.294582, 1.4541, -4.40542)

@@ -1,0 +1,176 @@
+[gd_scene load_steps=7 format=3 uid="uid://cx7c52bhqab56"]
+
+[ext_resource type="Script" path="res://scripts/MultiplexerLogic/MultiplexerLogic.gd" id="1_w6ljy"]
+[ext_resource type="PackedScene" uid="uid://cpvwhorts66eb" path="res://scenes/multiplexer level/MultiplexLabel.tscn" id="2_2sgai"]
+[ext_resource type="PackedScene" uid="uid://dbxe2sjotghhe" path="res://scenes/multiplexer level/MultiplexButton.tscn" id="3_5apge"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8p4n"]
+metallic = 0.29
+
+[sub_resource type="BoxMesh" id="BoxMesh_6jh5g"]
+material = SubResource("StandardMaterial3D_l8p4n")
+size = Vector3(1.25, 2, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n1b1l"]
+size = Vector3(1.5, 2.75, 0.25)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Multiplexer" type="StaticBody3D" parent="."]
+script = ExtResource("1_w6ljy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Multiplexer"]
+mesh = SubResource("BoxMesh_6jh5g")
+
+[node name="Inputs" type="Node3D" parent="Multiplexer/MeshInstance3D"]
+
+[node name="I0" parent="Multiplexer/MeshInstance3D/Inputs" instance=ExtResource("2_2sgai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.54, 0.88, 0.127)
+
+[node name="Label" type="Label3D" parent="Multiplexer/MeshInstance3D/Inputs/I0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16, 0, 0)
+text = "I0"
+font_size = 20
+
+[node name="I1" parent="Multiplexer/MeshInstance3D/Inputs" instance=ExtResource("2_2sgai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.54, 0.7, 0.127)
+
+[node name="Label" type="Label3D" parent="Multiplexer/MeshInstance3D/Inputs/I1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16, 0, 0)
+text = "I1"
+font_size = 20
+
+[node name="I2" parent="Multiplexer/MeshInstance3D/Inputs" instance=ExtResource("2_2sgai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.54, 0.52, 0.127)
+
+[node name="Label" type="Label3D" parent="Multiplexer/MeshInstance3D/Inputs/I2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16, 0, 0)
+text = "I2"
+font_size = 20
+
+[node name="I3" parent="Multiplexer/MeshInstance3D/Inputs" instance=ExtResource("2_2sgai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.54, 0.34, 0.127)
+
+[node name="Label" type="Label3D" parent="Multiplexer/MeshInstance3D/Inputs/I3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16, 0, 0)
+text = "I3"
+font_size = 20
+
+[node name="I4" parent="Multiplexer/MeshInstance3D/Inputs" instance=ExtResource("2_2sgai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.54, 0.16, 0.127)
+
+[node name="Label" type="Label3D" parent="Multiplexer/MeshInstance3D/Inputs/I4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16, 0, 0)
+text = "I4
+"
+font_size = 20
+
+[node name="I5" parent="Multiplexer/MeshInstance3D/Inputs" instance=ExtResource("2_2sgai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.54, -0.02, 0.127)
+
+[node name="Label" type="Label3D" parent="Multiplexer/MeshInstance3D/Inputs/I5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16, 0, 0)
+text = "I5"
+font_size = 20
+
+[node name="I6" parent="Multiplexer/MeshInstance3D/Inputs" instance=ExtResource("2_2sgai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.54, -0.2, 0.127)
+
+[node name="Label" type="Label3D" parent="Multiplexer/MeshInstance3D/Inputs/I6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16, 0, 0)
+text = "I6"
+font_size = 20
+
+[node name="I7" parent="Multiplexer/MeshInstance3D/Inputs" instance=ExtResource("2_2sgai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.54, -0.38, 0.127)
+
+[node name="Label" type="Label3D" parent="Multiplexer/MeshInstance3D/Inputs/I7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16, 0, 0)
+text = "I7
+"
+font_size = 20
+
+[node name="Selectors" type="Node3D" parent="Multiplexer/MeshInstance3D"]
+
+[node name="A2" parent="Multiplexer/MeshInstance3D/Selectors" instance=ExtResource("2_2sgai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.54, -0.87, 0.127)
+
+[node name="Label3D" type="Label3D" parent="Multiplexer/MeshInstance3D/Selectors/A2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16, 0)
+text = "A2"
+font_size = 20
+
+[node name="A1" parent="Multiplexer/MeshInstance3D/Selectors" instance=ExtResource("2_2sgai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38, -0.87, 0.127)
+
+[node name="Label3D" type="Label3D" parent="Multiplexer/MeshInstance3D/Selectors/A1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16, 0)
+text = "A1
+"
+font_size = 20
+
+[node name="A0" parent="Multiplexer/MeshInstance3D/Selectors" instance=ExtResource("2_2sgai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22, -0.87, 0.127)
+
+[node name="Label3D" type="Label3D" parent="Multiplexer/MeshInstance3D/Selectors/A0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16, 0)
+text = "A0"
+font_size = 20
+
+[node name="Result" type="Label3D" parent="Multiplexer/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.127)
+text = "0"
+
+[node name="Label3D" type="Label3D" parent="Multiplexer/MeshInstance3D/Result"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07523, 0.16, 0)
+text = "Result"
+font_size = 20
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Multiplexer"]
+shape = SubResource("BoxShape3D_n1b1l")
+
+[node name="Buttons" type="Node3D" parent="."]
+
+[node name="Button I0" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, 0.877, 0)
+value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I0")
+
+[node name="Button I1" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, 0.699, 0)
+value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I1")
+
+[node name="Button I2" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, 0.51, 0)
+value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I2")
+
+[node name="Button I3" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, 0.32, 0)
+value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I3")
+
+[node name="Button I4" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, 0.13, 0)
+value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I4")
+
+[node name="Button I5" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, -0.06, 0)
+value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I5")
+
+[node name="Button I6" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, -0.25, 0)
+value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I6")
+
+[node name="Button I7" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, -0.44, 0)
+value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I7")
+
+[node name="Button A2" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.54, -1.17, 0)
+value = NodePath("../../Multiplexer/MeshInstance3D/Selectors/A2")
+
+[node name="Button A1" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.38, -1.17, 0)
+value = NodePath("../../Multiplexer/MeshInstance3D/Selectors/A1")
+
+[node name="Button A0" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.22, -1.17, 0)
+value = NodePath("../../Multiplexer/MeshInstance3D/Selectors/A0")
