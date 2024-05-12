@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://i0sfj7yfh75v"]
+[gd_scene load_steps=12 format=3 uid="uid://i0sfj7yfh75v"]
 
-[ext_resource type="PackedScene" uid="uid://l2q8vmjedkst" path="res://scenes/Core/Player.tscn" id="1_hxym2"]
+[ext_resource type="PackedScene" uid="uid://brvg3wg2f1yia" path="res://scenes/Karnaugh/Level1Player.tscn" id="1_cimhi"]
 [ext_resource type="PackedScene" uid="uid://bvfnq7amluk42" path="res://scenes/Karnaugh/KarnaughMachine.tscn" id="2_mfd17"]
 [ext_resource type="PackedScene" uid="uid://rvvct3bbcdte" path="res://scenes/Karnaugh/ResetButton.tscn" id="3_s4yvo"]
+[ext_resource type="PackedScene" uid="uid://bbibk23o6bw0j" path="res://scenes/Karnaugh/Display.tscn" id="4_rjb3e"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_sfclp"]
 size = Vector3(10, 0.5, 10)
@@ -25,7 +26,7 @@ sky_material = SubResource("ProceduralSkyMaterial_hxeu8")
 background_mode = 2
 sky = SubResource("Sky_oke4f")
 
-[node name="World" type="Node3D"]
+[node name="Level1" type="Node3D"]
 
 [node name="Floor" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
@@ -49,17 +50,19 @@ shape = SubResource("ConvexPolygonShape3D_tuhjd")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_eqgpk")
 
-[node name="Player" parent="." instance=ExtResource("1_hxym2")]
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 10, 10)
 
-[node name="KarnaughMachine" parent="." instance=ExtResource("2_mfd17")]
+[node name="Player" parent="." instance=ExtResource("1_cimhi")]
+
+[node name="KarnaughMachine" parent="." node_paths=PackedStringArray("reset_button", "input_display") instance=ExtResource("2_mfd17")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.1)
+reset_button = NodePath("../ResetButton")
+input_display = NodePath("../InputDisplay")
 
 [node name="ResetButton" parent="." instance=ExtResource("3_s4yvo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73529, 0, -3.77627)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02956, 0, -3.77627)
 
-[connection signal="reset_pressed" from="ResetButton/Button" to="KarnaughMachine" method="_on_reset_pressed"]
-
-[editable path="ResetButton"]
+[node name="InputDisplay" parent="." instance=ExtResource("4_rjb3e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01694, 1.29751, -4.5)

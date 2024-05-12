@@ -26,7 +26,7 @@ func _ready():
 	#print(Result.text)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if(changed_label):
 		var idx = _compute_result()
 		Result.text = registers[idx].text

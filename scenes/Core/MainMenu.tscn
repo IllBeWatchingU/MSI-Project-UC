@@ -1,12 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxcqfix6rnkvj"]
 
-<<<<<<<< HEAD:scenes/Core/MainMenu.tscn
 [ext_resource type="Script" path="res://scripts/MainMenuButtons.gd" id="1_pjs4p"]
 [ext_resource type="PackedScene" uid="uid://i0sfj7yfh75v" path="res://scenes/Karnaugh/Level1.tscn" id="2_8acm1"]
-========
-[ext_resource type="Script" path="res://scripts/MainMenuButtons.gd" id="1_jhplb"]
-[ext_resource type="PackedScene" uid="uid://i0sfj7yfh75v" path="res://scenes/Karnaugh/Level1.tscn" id="2_pl37t"]
->>>>>>>> 273ca00 (lvl1 generate input and reset input buttons):scenes/Core/Main_Menu.tscn
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3

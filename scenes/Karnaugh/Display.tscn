@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbibk23o6bw0j"]
+
+[ext_resource type="Script" path="res://scenes/Karnaugh/Display.gd" id="1_5pbih"]
+[ext_resource type="FontFile" uid="uid://bh7dwfqomgxjx" path="res://assets/fonts/Nexa-Heavy.ttf" id="1_52d1k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nsrwp"]
+albedo_color = Color(0.188235, 0.188235, 0.188235, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5p430"]
+material = SubResource("StandardMaterial3D_nsrwp")
+size = Vector3(1.2, 0.6, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s2ysh"]
+size = Vector3(1.2, 0.6, 0.1)
+
+[node name="Display" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
+script = ExtResource("1_5pbih")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_5p430")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_s2ysh")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.051)
+pixel_size = 0.003
+text = "f(a,b,c,d) = s(01,2,3,4,5,6,7,8,9,10,11,12,13,14)"
+font = ExtResource("1_52d1k")
+autowrap_mode = 2
+width = 380.0

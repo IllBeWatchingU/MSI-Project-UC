@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://brvg3wg2f1yia"]
+
+[ext_resource type="PackedScene" uid="uid://l2q8vmjedkst" path="res://scenes/Core/Player.tscn" id="1_sa280"]
+[ext_resource type="PackedScene" uid="uid://66xsspgr5vgo" path="res://scenes/Karnaugh/Level1UI.tscn" id="2_2kbvq"]
+[ext_resource type="Script" path="res://scenes/Karnaugh/Level1Player.gd" id="2_mtnrv"]
+
+[node name="Player" instance=ExtResource("1_sa280")]
+script = ExtResource("2_mtnrv")
+
+[node name="Level1UI" parent="CameraHolder" index="3" instance=ExtResource("2_2kbvq")]
+unique_name_in_owner = true
