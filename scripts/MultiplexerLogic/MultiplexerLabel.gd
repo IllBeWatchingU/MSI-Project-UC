@@ -14,4 +14,3 @@ func _process(delta):
 	if(old_text != self.text):
 		old_text = self.text
 		emit_signal("text_changed")
-		print("Changed:" + old_text)

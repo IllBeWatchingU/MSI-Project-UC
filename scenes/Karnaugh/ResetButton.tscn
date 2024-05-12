@@ -53,12 +53,10 @@ display_text = "Reset button"
 action_text = "Reset the machine"
 
 [node name="InteractMesh" type="MeshInstance3D" parent="Button"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_8w0ki")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Button"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CylinderShape3D_6w3os")
 
 [connection signal="focused" from="Button" to="Button" method="_on_focused"]

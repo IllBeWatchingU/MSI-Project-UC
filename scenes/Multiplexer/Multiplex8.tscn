@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://cx7c52bhqab56"]
 
 [ext_resource type="Script" path="res://scripts/MultiplexerLogic/MultiplexerLogic.gd" id="1_w6ljy"]
-[ext_resource type="PackedScene" uid="uid://cpvwhorts66eb" path="res://scenes/multiplexer level/MultiplexLabel.tscn" id="2_2sgai"]
-[ext_resource type="PackedScene" uid="uid://dbxe2sjotghhe" path="res://scenes/multiplexer level/MultiplexButton.tscn" id="3_5apge"]
+[ext_resource type="PackedScene" uid="uid://cpvwhorts66eb" path="res://scenes/Multiplexer/MultiplexLabel.tscn" id="2_2sgai"]
+[ext_resource type="PackedScene" uid="uid://dbxe2sjotghhe" path="res://scenes/Multiplexer/MultiplexButton.tscn" id="3_5apge"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8p4n"]
 metallic = 0.29
@@ -134,43 +134,65 @@ shape = SubResource("BoxShape3D_n1b1l")
 [node name="Button I0" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, 0.877, 0)
 value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I0")
+display_text = "I0 Button"
+action_text = "Change bit value"
 
 [node name="Button I1" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, 0.699, 0)
 value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I1")
+display_text = "I1 Button"
+action_text = "Change bit value"
 
 [node name="Button I2" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, 0.51, 0)
 value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I2")
+display_text = "I2 Button"
+action_text = "Change bit value"
 
 [node name="Button I3" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, 0.32, 0)
 value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I3")
+display_text = "I3 Button"
+action_text = "Change bit value"
 
 [node name="Button I4" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, 0.13, 0)
 value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I4")
+display_text = "I4 Button"
+action_text = "Change bit value"
 
 [node name="Button I5" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, -0.06, 0)
 value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I5")
+display_text = "I5 Button"
+action_text = "Change bit value"
 
 [node name="Button I6" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, -0.25, 0)
 value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I6")
+display_text = "I6 Button"
+action_text = "Change bit value"
 
 [node name="Button I7" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, -0.44, 0)
 value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I7")
+display_text = "I7 Button"
+action_text = "Change bit value"
 
 [node name="Button A2" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.54, -1.17, 0)
 value = NodePath("../../Multiplexer/MeshInstance3D/Selectors/A2")
+display_text = "A2 Button"
+action_text = "Change bit value"
 
 [node name="Button A1" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.38, -1.17, 0)
 value = NodePath("../../Multiplexer/MeshInstance3D/Selectors/A1")
+display_text = "A1 Button"
+action_text = "Change bit value"
 
 [node name="Button A0" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.22, -1.17, 0)
 value = NodePath("../../Multiplexer/MeshInstance3D/Selectors/A0")
+display_text = "A0 Button"
+action_text = "Change bit value"

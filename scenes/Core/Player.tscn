@@ -14,6 +14,8 @@ height = 1.75
 [sub_resource type="LabelSettings" id="LabelSettings_5dybt"]
 font = ExtResource("4_c4tlg")
 font_size = 20
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 4
@@ -64,5 +66,7 @@ offset_bottom = 94.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
 label_settings = SubResource("LabelSettings_5dybt")
 horizontal_alignment = 1

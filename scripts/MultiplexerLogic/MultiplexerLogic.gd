@@ -29,15 +29,12 @@ func _ready():
 func _process(delta):
 	if(changed_label):
 		var idx = _compute_result()
-		print(idx)
 		Result.text = registers[idx].text
 		changed_label = 0
 
 func _compute_result():
 	var res = 0
 	for a in range(selectors.size()):
-		if a == 0:
-			print(selectors[a].text.to_int())
 		res += selectors[a].text.to_int() * (2 ** a)
 		
 	return res

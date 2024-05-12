@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://1rry81l46ffo"]
 
-[ext_resource type="PackedScene" uid="uid://l2q8vmjedkst" path="res://scenes/Player.tscn" id="1_23on8"]
-[ext_resource type="PackedScene" uid="uid://cx7c52bhqab56" path="res://scenes/multiplexer level/Multiplex8.tscn" id="3_36lhk"]
+[ext_resource type="PackedScene" uid="uid://l2q8vmjedkst" path="res://scenes/Core/Player.tscn" id="1_23on8"]
+[ext_resource type="PackedScene" uid="uid://cx7c52bhqab56" path="res://scenes/Multiplexer/Multiplex8.tscn" id="3_36lhk"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_sfclp"]
 size = Vector3(10, 0.5, 10)
