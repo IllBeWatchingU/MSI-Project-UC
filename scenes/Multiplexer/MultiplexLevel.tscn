@@ -1,9 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://1rry81l46ffo"]
+[gd_scene load_steps=20 format=3 uid="uid://1rry81l46ffo"]
 
 [ext_resource type="PackedScene" uid="uid://l2q8vmjedkst" path="res://scenes/Core/Player.tscn" id="1_23on8"]
+[ext_resource type="PackedScene" uid="uid://bxuif5eyw3uay" path="res://scenes/Multiplexer/Sign.tscn" id="3_7mmhe"]
 [ext_resource type="PackedScene" uid="uid://cx7c52bhqab56" path="res://scenes/Multiplexer/Multiplex8.tscn" id="3_36lhk"]
+[ext_resource type="Script" path="res://scripts/MultiplexerLogic/CheckMultiplexerNumbers.gd" id="4_i1we0"]
+[ext_resource type="Script" path="res://scripts/MultiplexerLogic/MultiplexerNumberButton.gd" id="4_vc05v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvimb"]
+albedo_color = Color(1, 0.694118, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_sfclp"]
+material = SubResource("StandardMaterial3D_lvimb")
 size = Vector3(10, 0.5, 10)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ytgu4"]
@@ -24,66 +31,90 @@ sky_material = SubResource("ProceduralSkyMaterial_hxeu8")
 background_mode = 2
 sky = SubResource("Sky_oke4f")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cumfj"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_vrxag"]
+material = SubResource("StandardMaterial3D_cumfj")
+size = Vector3(0.3, 0.3, 0.1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_563mk"]
+height = 0.131
+radius = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gda46"]
+albedo_color = Color(1, 0.239216, 0.270588, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_mtix8"]
+material = SubResource("StandardMaterial3D_gda46")
+size = Vector3(0.3, 0.3, 0.1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dkque"]
+height = 0.131
+radius = 0.2
+
 [node name="World" type="Node3D"]
 
-[node name="Floor" type="StaticBody3D" parent="."]
+[node name="Room" type="Node3D" parent="."]
+
+[node name="Floor" type="StaticBody3D" parent="Room"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room/Floor"]
 mesh = SubResource("BoxMesh_sfclp")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Floor"]
 shape = SubResource("ConvexPolygonShape3D_ytgu4")
 
-[node name="Ceiling" type="StaticBody3D" parent="."]
+[node name="Ceiling" type="StaticBody3D" parent="Room"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.26239, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ceiling"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room/Ceiling"]
 mesh = SubResource("BoxMesh_sfclp")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ceiling"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Ceiling"]
 shape = SubResource("ConvexPolygonShape3D_ytgu4")
 
-[node name="Wall" type="StaticBody3D" parent="."]
+[node name="Wall" type="StaticBody3D" parent="Room"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room/Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.75)
 mesh = SubResource("BoxMesh_vqp60")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.75)
 shape = SubResource("ConvexPolygonShape3D_tuhjd")
 
-[node name="Wall3" type="StaticBody3D" parent="."]
+[node name="Wall3" type="StaticBody3D" parent="Room"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.443302, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall3"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room/Wall3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.75)
 mesh = SubResource("BoxMesh_vqp60")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Wall3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.75)
 shape = SubResource("ConvexPolygonShape3D_tuhjd")
 
-[node name="Wall4" type="StaticBody3D" parent="."]
+[node name="Wall4" type="StaticBody3D" parent="Room"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.95794, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall4"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room/Wall4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.75)
 mesh = SubResource("BoxMesh_vqp60")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Wall4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.75)
 shape = SubResource("ConvexPolygonShape3D_tuhjd")
 
-[node name="Wall2" type="StaticBody3D" parent="."]
+[node name="Wall2" type="StaticBody3D" parent="Room"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.50473)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room/Wall2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.75)
 mesh = SubResource("BoxMesh_vqp60")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Wall2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.75)
 shape = SubResource("ConvexPolygonShape3D_tuhjd")
 
@@ -96,5 +127,79 @@ environment = SubResource("Environment_eqgpk")
 transform = Transform3D(0.643135, -0.663161, 0.382877, 0, 0.5, 0.866025, -0.765753, -0.556971, 0.321568, 0.837949, 3.48198, 2.42873)
 light_energy = 1.914
 
-[node name="Multiplexer8" parent="." instance=ExtResource("3_36lhk")]
+[node name="Sign" parent="." instance=ExtResource("3_7mmhe")]
+transform = Transform3D(0.280767, 0, 0.959776, 0, 1, 0, -0.959776, 0, 0.280767, -3.39869, 0.578338, -1.727)
+
+[node name="NumberMultiplexers" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.94852, 1.16022, -0.755476)
+text = "1"
+font_size = 50
+script = ExtResource("4_i1we0")
+
+[node name="SingleMpx" type="Node3D" parent="NumberMultiplexers"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.755476, -1.16022, 4.94852)
+
+[node name="Mpx8" parent="NumberMultiplexers/SingleMpx" instance=ExtResource("3_36lhk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.294582, 1.4541, -4.40542)
+
+[node name="TwoMpx" type="Node3D" parent="NumberMultiplexers"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.755476, -1.16022, 4.94852)
+visible = false
+
+[node name="Mpx2" parent="NumberMultiplexers/TwoMpx" instance=ExtResource("3_36lhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.802, 1.454, -4.405)
+
+[node name="Mpx1" parent="NumberMultiplexers/TwoMpx" instance=ExtResource("3_36lhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.227, 1.454, -4.405)
+
+[node name="ThreeMpx" type="Node3D" parent="NumberMultiplexers"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.755476, -1.16022, 4.94852)
+visible = false
+
+[node name="Mpx1" parent="NumberMultiplexers/ThreeMpx" instance=ExtResource("3_36lhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11263, 1.454, -4.405)
+
+[node name="Mpx2" parent="NumberMultiplexers/ThreeMpx" instance=ExtResource("3_36lhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.454, -4.405)
+
+[node name="Mpx3" parent="NumberMultiplexers/ThreeMpx" instance=ExtResource("3_36lhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2406, 1.454, -4.405)
+
+[node name="LabelNumber" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.94852, 1.72411, -0.755476)
+text = "Change the number
+ of used multiplexers:"
+
+[node name="ButtonRight" type="StaticBody3D" parent="LabelNumber" node_paths=PackedStringArray("number_of_multiplexers")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.34, -0.6, 0)
+collision_layer = 3
+script = ExtResource("4_vc05v")
+mode = 1
+number_of_multiplexers = NodePath("../../NumberMultiplexers")
+
+[node name="InteractMesh" type="MeshInstance3D" parent="LabelNumber/ButtonRight"]
+mesh = SubResource("PrismMesh_vrxag")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LabelNumber/ButtonRight"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.042292, 0)
+shape = SubResource("CylinderShape3D_563mk")
+
+[node name="ButtonLeft" type="StaticBody3D" parent="LabelNumber" node_paths=PackedStringArray("number_of_multiplexers")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.36025, -0.6, 0)
+collision_layer = 3
+script = ExtResource("4_vc05v")
+number_of_multiplexers = NodePath("../../NumberMultiplexers")
+
+[node name="InteractMesh" type="MeshInstance3D" parent="LabelNumber/ButtonLeft"]
+mesh = SubResource("PrismMesh_mtix8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LabelNumber/ButtonLeft"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00788748, -0.0343969, 0)
+shape = SubResource("CylinderShape3D_dkque")
+
+[connection signal="focused" from="LabelNumber/ButtonRight" to="LabelNumber/ButtonRight" method="_on_focused"]
+[connection signal="interacted" from="LabelNumber/ButtonRight" to="LabelNumber/ButtonRight" method="_on_interacted"]
+[connection signal="unfocused" from="LabelNumber/ButtonRight" to="LabelNumber/ButtonRight" method="_on_unfocused"]
+[connection signal="focused" from="LabelNumber/ButtonLeft" to="LabelNumber/ButtonLeft" method="_on_focused"]
+[connection signal="interacted" from="LabelNumber/ButtonLeft" to="LabelNumber/ButtonLeft" method="_on_interacted"]
+[connection signal="unfocused" from="LabelNumber/ButtonLeft" to="LabelNumber/ButtonLeft" method="_on_unfocused"]
