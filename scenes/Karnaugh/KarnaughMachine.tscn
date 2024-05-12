@@ -1,0 +1,163 @@
+[gd_scene load_steps=9 format=3 uid="uid://bvfnq7amluk42"]
+
+[ext_resource type="Script" path="res://scenes/Karnaugh/KarnaughMachine.gd" id="1_4em16"]
+[ext_resource type="FontFile" uid="uid://bh7dwfqomgxjx" path="res://assets/fonts/Nexa-Heavy.ttf" id="1_48ina"]
+[ext_resource type="PackedScene" uid="uid://dts2vj7khyqdy" path="res://scenes/Karnaugh/Cell.tscn" id="2_4ufnn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jt8ll"]
+size = Vector3(0.4, 1.7, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wftfg"]
+size = Vector3(1.7, 0.4, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nwavf"]
+size = Vector3(2.4, 2.4, 0.9)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2in02"]
+albedo_color = Color(0.376471, 0.376471, 0.376471, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5hlm8"]
+material = SubResource("StandardMaterial3D_2in02")
+size = Vector3(2.4, 2.4, 0.8)
+
+[node name="KarnaughMachine" type="StaticBody3D"]
+script = ExtResource("1_4em16")
+
+[node name="AB" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 0.95, 0.05)
+mesh = SubResource("BoxMesh_jt8ll")
+
+[node name="L00" type="Label3D" parent="AB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85, 1.625, 0.101)
+text = "00"
+font = ExtResource("1_48ina")
+
+[node name="L01" type="Label3D" parent="AB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85, 1.175, 0.101)
+text = "01"
+font = ExtResource("1_48ina")
+
+[node name="L11" type="Label3D" parent="AB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85, 0.725, 0.101)
+text = "11"
+font = ExtResource("1_48ina")
+
+[node name="L10" type="Label3D" parent="AB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85, 0.275, 0.101)
+text = "10"
+font = ExtResource("1_48ina")
+
+[node name="LAB" type="Label3D" parent="AB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.95, 0.101)
+text = "A
+B"
+font = ExtResource("1_48ina")
+
+[node name="CD" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CD"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 2.1, 0.05)
+mesh = SubResource("BoxMesh_wftfg")
+
+[node name="L00" type="Label3D" parent="CD"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.425, 2, 0.101)
+text = "00"
+font = ExtResource("1_48ina")
+
+[node name="L01" type="Label3D" parent="CD"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025, 2, 0.101)
+text = "01"
+font = ExtResource("1_48ina")
+
+[node name="L11" type="Label3D" parent="CD"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.475, 2, 0.101)
+text = "11"
+font = ExtResource("1_48ina")
+
+[node name="L10" type="Label3D" parent="CD"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.925, 2, 0.101)
+text = "10"
+font = ExtResource("1_48ina")
+
+[node name="LCD" type="Label3D" parent="CD"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 2.2, 0.101)
+text = "CD"
+font = ExtResource("1_48ina")
+
+[node name="Cells" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4)
+
+[node name="Cell0" parent="Cells" instance=ExtResource("2_4ufnn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.425, 1.625, 0)
+
+[node name="Cell1" parent="Cells" instance=ExtResource("2_4ufnn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025, 1.625, 0)
+id = 1
+
+[node name="Cell2" parent="Cells" instance=ExtResource("2_4ufnn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.475, 1.625, 0)
+id = 2
+
+[node name="Cell3" parent="Cells" instance=ExtResource("2_4ufnn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.925, 1.625, 0)
+id = 3
+
+[node name="Cell4" parent="Cells" instance=ExtResource("2_4ufnn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.425, 1.175, 0)
+id = 4
+
+[node name="Cell5" parent="Cells" instance=ExtResource("2_4ufnn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025, 1.175, 0)
+id = 5
+
+[node name="Cell6" parent="Cells" instance=ExtResource("2_4ufnn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.475, 1.175, 0)
+id = 6
+
+[node name="Cell7" parent="Cells" instance=ExtResource("2_4ufnn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.925, 1.175, 0)
+id = 7
+
+[node name="Cell8" parent="Cells" instance=ExtResource("2_4ufnn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.425, 0.725, 0)
+id = 8
+
+[node name="Cell9" parent="Cells" instance=ExtResource("2_4ufnn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025, 0.725, 0)
+id = 9
+
+[node name="Cell10" parent="Cells" instance=ExtResource("2_4ufnn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.475, 0.725, 0)
+id = 10
+
+[node name="Cell11" parent="Cells" instance=ExtResource("2_4ufnn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.925, 0.725, 0)
+id = 11
+
+[node name="Cell12" parent="Cells" instance=ExtResource("2_4ufnn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.425, 0.275, 0)
+id = 12
+
+[node name="Cell13" parent="Cells" instance=ExtResource("2_4ufnn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025, 0.275, 0)
+id = 13
+
+[node name="Cell14" parent="Cells" instance=ExtResource("2_4ufnn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.475, 0.275, 0)
+id = 14
+
+[node name="Cell15" parent="Cells" instance=ExtResource("2_4ufnn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.925, 0.275, 0)
+id = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0.0373105)
+shape = SubResource("BoxShape3D_nwavf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+mesh = SubResource("BoxMesh_5hlm8")

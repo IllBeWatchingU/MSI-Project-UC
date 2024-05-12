@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxcqfix6rnkvj"]
 
 [ext_resource type="Script" path="res://scripts/MainMenuButtons.gd" id="1_jhplb"]
-[ext_resource type="PackedScene" uid="uid://i0sfj7yfh75v" path="res://scenes/World.tscn" id="2_pl37t"]
+[ext_resource type="PackedScene" uid="uid://i0sfj7yfh75v" path="res://scenes/Karnaugh/Level1.tscn" id="2_pl37t"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
