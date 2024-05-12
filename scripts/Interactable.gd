@@ -5,21 +5,24 @@ signal focused(interactor: RayCast3D)
 signal unfocused(interactor: RayCast3D)
 signal interacted(interactor: RayCast3D)
 
-@onready var interacted_material: Material = $MeshInstance3D.mesh.material.duplicate()
-@onready var focused_material: Material = $MeshInstance3D.mesh.material.duplicate()
+@export var display_text: String = ""
+@export var action_text: String = ""
+
+@onready var interact_mesh = find_child("InteractMesh")
+@onready var highlight_material: Material = preload("res://assets/highlight_material.tres")
+var focused_material: Material
 
 func _ready():
-	interacted_material.albedo_color = Color("0000ff")
-	focused_material.albedo_color = Color("00ff00")
-
+	focused_material = interact_mesh.mesh.material.duplicate()
+	focused_material.next_pass = highlight_material
 
 func _on_focused(_interactor):
-	$MeshInstance3D.material_override = focused_material
+	interact_mesh.material_override = focused_material
 
 
 func _on_interacted(_interactor):
-	$MeshInstance3D.material_override = interacted_material
+	pass
 
 
 func _on_unfocused(_interactor):
-	$MeshInstance3D.material_override = null
+	interact_mesh.material_override = null

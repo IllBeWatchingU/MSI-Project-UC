@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbxe2sjotghhe"]
+
+[ext_resource type="Script" path="res://scripts/MultiplexerLogic/MultiplexerButtons.gd" id="1_knd88"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7e87"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_qt8ig"]
+material = SubResource("StandardMaterial3D_t7e87")
+size = Vector3(0.25, 0.15, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yjt5h"]
+size = Vector3(0.25, 0.15, 0.25)
+
+[node name="Button" type="StaticBody3D"]
+collision_layer = 3
+script = ExtResource("1_knd88")
+
+[node name="InteractMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_qt8ig")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_yjt5h")
+
+[connection signal="focused" from="." to="." method="_on_focused"]
+[connection signal="interacted" from="." to="." method="_on_interacted"]
+[connection signal="unfocused" from="." to="." method="_on_unfocused"]

@@ -1,0 +1,100 @@
+[gd_scene load_steps=10 format=3 uid="uid://1rry81l46ffo"]
+
+[ext_resource type="PackedScene" uid="uid://l2q8vmjedkst" path="res://scenes/Core/Player.tscn" id="1_23on8"]
+[ext_resource type="PackedScene" uid="uid://cx7c52bhqab56" path="res://scenes/Multiplexer/Multiplex8.tscn" id="3_36lhk"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_sfclp"]
+size = Vector3(10, 0.5, 10)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ytgu4"]
+points = PackedVector3Array(-5, -0.25, -5, -5, 0.25, -5, 5, -0.25, -5, -5, -0.25, 5, -5, 0.25, 5, 5, 0.25, -5, 5, -0.25, 5, 5, 0.25, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vqp60"]
+size = Vector3(10, 6, 0.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tuhjd"]
+points = PackedVector3Array(5, 1.5, 0.25, 5, 1.5, -0.25, -5, 1.5, 0.25, 5, -1.5, 0.25, 5, -1.5, -0.25, -5, 1.5, -0.25, -5, -1.5, 0.25, -5, -1.5, -0.25)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hxeu8"]
+
+[sub_resource type="Sky" id="Sky_oke4f"]
+sky_material = SubResource("ProceduralSkyMaterial_hxeu8")
+
+[sub_resource type="Environment" id="Environment_eqgpk"]
+background_mode = 2
+sky = SubResource("Sky_oke4f")
+
+[node name="World" type="Node3D"]
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_sfclp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("ConvexPolygonShape3D_ytgu4")
+
+[node name="Ceiling" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.26239, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ceiling"]
+mesh = SubResource("BoxMesh_sfclp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ceiling"]
+shape = SubResource("ConvexPolygonShape3D_ytgu4")
+
+[node name="Wall" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.75)
+mesh = SubResource("BoxMesh_vqp60")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.75)
+shape = SubResource("ConvexPolygonShape3D_tuhjd")
+
+[node name="Wall3" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.443302, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.75)
+mesh = SubResource("BoxMesh_vqp60")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.75)
+shape = SubResource("ConvexPolygonShape3D_tuhjd")
+
+[node name="Wall4" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.95794, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.75)
+mesh = SubResource("BoxMesh_vqp60")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.75)
+shape = SubResource("ConvexPolygonShape3D_tuhjd")
+
+[node name="Wall2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.50473)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.75)
+mesh = SubResource("BoxMesh_vqp60")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.75)
+shape = SubResource("ConvexPolygonShape3D_tuhjd")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_eqgpk")
+
+[node name="Player" parent="." instance=ExtResource("1_23on8")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.643135, -0.663161, 0.382877, 0, 0.5, 0.866025, -0.765753, -0.556971, 0.321568, 0.837949, 3.48198, 2.42873)
+light_energy = 1.914
+
+[node name="Multiplexer8" parent="." instance=ExtResource("3_36lhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.294582, 1.4541, -4.40542)

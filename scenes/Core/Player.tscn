@@ -1,14 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://l2q8vmjedkst"]
+[gd_scene load_steps=8 format=3 uid="uid://l2q8vmjedkst"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_2shc1"]
 [ext_resource type="Texture2D" uid="uid://cfc3g53gmvy1g" path="res://assets/crosshair.png" id="2_qxn3v"]
 [ext_resource type="Script" path="res://scripts/InteractRaycast.gd" id="3_ejpgq"]
+[ext_resource type="FontFile" uid="uid://bh7dwfqomgxjx" path="res://assets/fonts/Nexa-Heavy.ttf" id="4_c4tlg"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_gp2yb"]
 height = 1.75
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wmfc0"]
 height = 1.75
+
+[sub_resource type="LabelSettings" id="LabelSettings_5dybt"]
+font = ExtResource("4_c4tlg")
+font_size = 20
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 4
@@ -48,3 +55,18 @@ texture = ExtResource("2_qxn3v")
 target_position = Vector3(0, 0, -3)
 collision_mask = 2
 script = ExtResource("3_ejpgq")
+
+[node name="Label" type="Label" parent="CameraHolder/InteractRaycast"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 21.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+label_settings = SubResource("LabelSettings_5dybt")
+horizontal_alignment = 1

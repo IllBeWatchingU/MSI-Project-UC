@@ -1,0 +1,321 @@
+[gd_scene load_steps=14 format=3 uid="uid://cx7c52bhqab56"]
+
+[ext_resource type="Script" path="res://scripts/MultiplexerButtons.gd" id="1_0oiqy"]
+[ext_resource type="Script" path="res://scripts/Multiplexer8Logic.gd" id="1_ke6h0"]
+[ext_resource type="Script" path="res://scripts/MultiplexerLabel.gd" id="2_uujsl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8p4n"]
+metallic = 0.29
+
+[sub_resource type="BoxMesh" id="BoxMesh_6jh5g"]
+material = SubResource("StandardMaterial3D_l8p4n")
+size = Vector3(1.25, 2, 0.25)
+
+[sub_resource type="SystemFont" id="SystemFont_owni8"]
+subpixel_positioning = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n1b1l"]
+size = Vector3(1.5, 2.75, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gktbt"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_t47sk"]
+material = SubResource("StandardMaterial3D_gktbt")
+size = Vector3(0.25, 0.15, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_74f3f"]
+size = Vector3(0.25, 0.15, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sjeok"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2wy2u"]
+material = SubResource("StandardMaterial3D_sjeok")
+size = Vector3(0.25, 0.15, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_foemv"]
+size = Vector3(0.25, 0.15, 0.25)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Multiplexer" type="StaticBody3D" parent="."]
+script = ExtResource("1_ke6h0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Multiplexer"]
+mesh = SubResource("BoxMesh_6jh5g")
+
+[node name="Inputs" type="Node3D" parent="Multiplexer/MeshInstance3D"]
+
+[node name="I0" type="Label3D" parent="Multiplexer/MeshInstance3D/Inputs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.54, 0.88, 0.127)
+text = "0"
+font = SubResource("SystemFont_owni8")
+script = ExtResource("2_uujsl")
+
+[node name="I1" type="Label3D" parent="Multiplexer/MeshInstance3D/Inputs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.54, 0.7, 0.127)
+text = "0
+"
+font = SubResource("SystemFont_owni8")
+script = ExtResource("2_uujsl")
+
+[node name="I2" type="Label3D" parent="Multiplexer/MeshInstance3D/Inputs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.54, 0.52, 0.127)
+text = "0
+"
+font = SubResource("SystemFont_owni8")
+script = ExtResource("2_uujsl")
+
+[node name="I3" type="Label3D" parent="Multiplexer/MeshInstance3D/Inputs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.54, 0.34, 0.127)
+text = "0
+"
+font = SubResource("SystemFont_owni8")
+script = ExtResource("2_uujsl")
+
+[node name="I4" type="Label3D" parent="Multiplexer/MeshInstance3D/Inputs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.54, 0.16, 0.127)
+text = "0
+"
+font = SubResource("SystemFont_owni8")
+script = ExtResource("2_uujsl")
+
+[node name="I5" type="Label3D" parent="Multiplexer/MeshInstance3D/Inputs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.54, -0.02, 0.127)
+text = "0
+"
+font = SubResource("SystemFont_owni8")
+script = ExtResource("2_uujsl")
+
+[node name="I6" type="Label3D" parent="Multiplexer/MeshInstance3D/Inputs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.54, -0.2, 0.127)
+text = "0
+"
+font = SubResource("SystemFont_owni8")
+script = ExtResource("2_uujsl")
+
+[node name="I7" type="Label3D" parent="Multiplexer/MeshInstance3D/Inputs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.54, -0.38, 0.127)
+text = "0
+"
+font = SubResource("SystemFont_owni8")
+script = ExtResource("2_uujsl")
+
+[node name="Selectors" type="Node3D" parent="Multiplexer/MeshInstance3D"]
+
+[node name="A2" type="Label3D" parent="Multiplexer/MeshInstance3D/Selectors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.54, -0.87, 0.127)
+text = "0
+"
+font = SubResource("SystemFont_owni8")
+script = ExtResource("2_uujsl")
+
+[node name="A1" type="Label3D" parent="Multiplexer/MeshInstance3D/Selectors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38, -0.87, 0.127)
+text = "0
+"
+font = SubResource("SystemFont_owni8")
+script = ExtResource("2_uujsl")
+
+[node name="A0" type="Label3D" parent="Multiplexer/MeshInstance3D/Selectors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22, -0.87, 0.127)
+text = "0
+"
+font = SubResource("SystemFont_owni8")
+script = ExtResource("2_uujsl")
+
+[node name="Result" type="Label3D" parent="Multiplexer/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.127)
+text = "0"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Multiplexer"]
+shape = SubResource("BoxShape3D_n1b1l")
+
+[node name="Buttons" type="Node3D" parent="."]
+
+[node name="Button I0" type="StaticBody3D" parent="Buttons" node_paths=PackedStringArray("value")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.123434, 0)
+collision_layer = 3
+script = ExtResource("1_0oiqy")
+value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Buttons/Button I0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, 1, 0)
+mesh = SubResource("BoxMesh_t47sk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buttons/Button I0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, 1.05, 0)
+shape = SubResource("BoxShape3D_74f3f")
+
+[node name="Button I1" type="StaticBody3D" parent="Buttons" node_paths=PackedStringArray("value")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.123434, 0)
+collision_layer = 3
+script = ExtResource("1_0oiqy")
+value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Buttons/Button I1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, 0.82, 0)
+mesh = SubResource("BoxMesh_2wy2u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buttons/Button I1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, 0.82, 0)
+shape = SubResource("BoxShape3D_foemv")
+
+[node name="Button I2" type="StaticBody3D" parent="Buttons" node_paths=PackedStringArray("value")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.123, 0)
+collision_layer = 3
+script = ExtResource("1_0oiqy")
+value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Buttons/Button I2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, 0.63, 0)
+mesh = SubResource("BoxMesh_2wy2u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buttons/Button I2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, 0.63, 0)
+shape = SubResource("BoxShape3D_foemv")
+
+[node name="Button I3" type="StaticBody3D" parent="Buttons" node_paths=PackedStringArray("value")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.123, 0)
+collision_layer = 3
+script = ExtResource("1_0oiqy")
+value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Buttons/Button I3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, 0.44, 0)
+mesh = SubResource("BoxMesh_2wy2u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buttons/Button I3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, 0.44, 0)
+shape = SubResource("BoxShape3D_foemv")
+
+[node name="Button I4" type="StaticBody3D" parent="Buttons" node_paths=PackedStringArray("value")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.123, 0)
+collision_layer = 3
+script = ExtResource("1_0oiqy")
+value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Buttons/Button I4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, 0.25, 0)
+mesh = SubResource("BoxMesh_2wy2u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buttons/Button I4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, 0.25, 0)
+shape = SubResource("BoxShape3D_foemv")
+
+[node name="Button I5" type="StaticBody3D" parent="Buttons" node_paths=PackedStringArray("value")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.123434, 0)
+collision_layer = 3
+script = ExtResource("1_0oiqy")
+value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Buttons/Button I5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, 0.06, 0)
+mesh = SubResource("BoxMesh_t47sk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buttons/Button I5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, 0.06, 0)
+shape = SubResource("BoxShape3D_74f3f")
+
+[node name="Button I6" type="StaticBody3D" parent="Buttons" node_paths=PackedStringArray("value")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.123434, 0)
+collision_layer = 3
+script = ExtResource("1_0oiqy")
+value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Buttons/Button I6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, -0.13, 0)
+mesh = SubResource("BoxMesh_t47sk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buttons/Button I6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, -0.13, 0)
+shape = SubResource("BoxShape3D_74f3f")
+
+[node name="Button I7" type="StaticBody3D" parent="Buttons" node_paths=PackedStringArray("value")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.123434, 0)
+collision_layer = 3
+script = ExtResource("1_0oiqy")
+value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Buttons/Button I7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, -0.32, 0)
+mesh = SubResource("BoxMesh_t47sk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buttons/Button I7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, -0.32, 0)
+shape = SubResource("BoxShape3D_74f3f")
+
+[node name="Button A2" type="StaticBody3D" parent="Buttons" node_paths=PackedStringArray("value")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.23, -0.39, 0)
+collision_layer = 3
+script = ExtResource("1_0oiqy")
+value = NodePath("../../Multiplexer/MeshInstance3D/Selectors/A2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Buttons/Button A2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, -0.32, 0)
+mesh = SubResource("BoxMesh_t47sk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buttons/Button A2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, -0.32, 0)
+shape = SubResource("BoxShape3D_74f3f")
+
+[node name="Button A1" type="StaticBody3D" parent="Buttons" node_paths=PackedStringArray("value")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.0553905, -0.39, 0)
+collision_layer = 3
+script = ExtResource("1_0oiqy")
+value = NodePath("../../Multiplexer/MeshInstance3D/Selectors/A1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Buttons/Button A1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, -0.32, 0)
+mesh = SubResource("BoxMesh_t47sk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buttons/Button A1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, -0.32, 0)
+shape = SubResource("BoxShape3D_74f3f")
+
+[node name="Button A0" type="StaticBody3D" parent="Buttons" node_paths=PackedStringArray("value")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.12061, -0.39, 0)
+collision_layer = 3
+script = ExtResource("1_0oiqy")
+value = NodePath("../../Multiplexer/MeshInstance3D/Selectors/A0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Buttons/Button A0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, -0.32, 0)
+mesh = SubResource("BoxMesh_t47sk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buttons/Button A0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, -0.32, 0)
+shape = SubResource("BoxShape3D_74f3f")
+
+[connection signal="focused" from="Buttons/Button I0" to="Buttons/Button I0" method="_on_focused"]
+[connection signal="interacted" from="Buttons/Button I0" to="Buttons/Button I0" method="_on_interacted"]
+[connection signal="unfocused" from="Buttons/Button I0" to="Buttons/Button I0" method="_on_unfocused"]
+[connection signal="focused" from="Buttons/Button I1" to="Buttons/Button I1" method="_on_focused"]
+[connection signal="interacted" from="Buttons/Button I1" to="Buttons/Button I1" method="_on_interacted"]
+[connection signal="unfocused" from="Buttons/Button I1" to="Buttons/Button I1" method="_on_unfocused"]
+[connection signal="focused" from="Buttons/Button I2" to="Buttons/Button I2" method="_on_focused"]
+[connection signal="interacted" from="Buttons/Button I2" to="Buttons/Button I2" method="_on_interacted"]
+[connection signal="unfocused" from="Buttons/Button I2" to="Buttons/Button I2" method="_on_unfocused"]
+[connection signal="focused" from="Buttons/Button I3" to="Buttons/Button I3" method="_on_focused"]
+[connection signal="interacted" from="Buttons/Button I3" to="Buttons/Button I3" method="_on_interacted"]
+[connection signal="unfocused" from="Buttons/Button I3" to="Buttons/Button I3" method="_on_unfocused"]
+[connection signal="focused" from="Buttons/Button I4" to="Buttons/Button I4" method="_on_focused"]
+[connection signal="interacted" from="Buttons/Button I4" to="Buttons/Button I4" method="_on_interacted"]
+[connection signal="unfocused" from="Buttons/Button I4" to="Buttons/Button I4" method="_on_unfocused"]
+[connection signal="focused" from="Buttons/Button I5" to="Buttons/Button I5" method="_on_focused"]
+[connection signal="interacted" from="Buttons/Button I5" to="Buttons/Button I5" method="_on_interacted"]
+[connection signal="unfocused" from="Buttons/Button I5" to="Buttons/Button I5" method="_on_unfocused"]
+[connection signal="focused" from="Buttons/Button I6" to="Buttons/Button I6" method="_on_focused"]
+[connection signal="interacted" from="Buttons/Button I6" to="Buttons/Button I6" method="_on_interacted"]
+[connection signal="unfocused" from="Buttons/Button I6" to="Buttons/Button I6" method="_on_unfocused"]
+[connection signal="focused" from="Buttons/Button I7" to="Buttons/Button I7" method="_on_focused"]
+[connection signal="interacted" from="Buttons/Button I7" to="Buttons/Button I7" method="_on_interacted"]
+[connection signal="unfocused" from="Buttons/Button I7" to="Buttons/Button I7" method="_on_unfocused"]
+[connection signal="focused" from="Buttons/Button A2" to="Buttons/Button A2" method="_on_focused"]
+[connection signal="interacted" from="Buttons/Button A2" to="Buttons/Button A2" method="_on_interacted"]
+[connection signal="unfocused" from="Buttons/Button A2" to="Buttons/Button A2" method="_on_unfocused"]
+[connection signal="focused" from="Buttons/Button A1" to="Buttons/Button A1" method="_on_focused"]
+[connection signal="interacted" from="Buttons/Button A1" to="Buttons/Button A1" method="_on_interacted"]
+[connection signal="unfocused" from="Buttons/Button A1" to="Buttons/Button A1" method="_on_unfocused"]
+[connection signal="focused" from="Buttons/Button A0" to="Buttons/Button A0" method="_on_focused"]
+[connection signal="interacted" from="Buttons/Button A0" to="Buttons/Button A0" method="_on_interacted"]
+[connection signal="unfocused" from="Buttons/Button A0" to="Buttons/Button A0" method="_on_unfocused"]

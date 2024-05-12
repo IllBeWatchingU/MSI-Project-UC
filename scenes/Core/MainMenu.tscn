@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxcqfix6rnkvj"]
 
-[ext_resource type="Script" path="res://scripts/MainMenuButtons.gd" id="1_jhplb"]
-[ext_resource type="PackedScene" uid="uid://i0sfj7yfh75v" path="res://scenes/World.tscn" id="2_pl37t"]
+[ext_resource type="Script" path="res://scripts/MainMenuButtons.gd" id="1_pjs4p"]
+[ext_resource type="PackedScene" uid="uid://i0sfj7yfh75v" path="res://scenes/Karnaugh/Level1.tscn" id="2_8acm1"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -34,8 +34,8 @@ offset_bottom = 213.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
-script = ExtResource("1_jhplb")
-sceneToLoad = ExtResource("2_pl37t")
+script = ExtResource("1_pjs4p")
+sceneToLoad = ExtResource("2_8acm1")
 
 [node name="PlayButton" type="Button" parent="Buttons"]
 layout_mode = 2

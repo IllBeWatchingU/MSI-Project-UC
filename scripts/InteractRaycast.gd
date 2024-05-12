@@ -1,23 +1,19 @@
 extends RayCast3D
 
+@onready var interact_key = InputMap.action_get_events("Interact")[0].as_text_physical_keycode()
+
 var last_collided: Object = null 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-	
 	
 func _physics_process(_delta):
 	var body: Node3D = get_collider()
 	
-	if last_collided == body: return
-	if last_collided is Interactable: last_collided.unfocused.emit(self)
-	if body is Interactable: body.focused.emit(self)
+	if last_collided != body:
+		if last_collided is Interactable: 
+			last_collided.unfocused.emit(self)
+			$Label.text = ""
+		if body is Interactable: 
+			body.focused.emit(self)
+			$Label.text = "%s\n[%s] %s" % [body.display_text, interact_key, body.action_text]
 	last_collided = body
 		
 

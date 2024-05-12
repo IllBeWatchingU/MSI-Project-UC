@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpvwhorts66eb"]
+
+[ext_resource type="Script" path="res://scripts/MultiplexerLogic/MultiplexerLabel.gd" id="1_tdbgs"]
+
+[sub_resource type="SystemFont" id="SystemFont_0gm4p"]
+subpixel_positioning = 0
+
+[node name="MultiplexerLabel" type="Label3D"]
+text = "0"
+font = SubResource("SystemFont_0gm4p")
+script = ExtResource("1_tdbgs")
