@@ -10,14 +10,9 @@ signal interacted(interactor: RayCast3D)
 
 @onready var interact_mesh = find_child("InteractMesh")
 @onready var highlight_material: Material = preload("res://assets/highlight_material.tres")
-var focused_material: Material
-
-func _ready():
-	focused_material = interact_mesh.mesh.material.duplicate()
-	focused_material.next_pass = highlight_material
 
 func _on_focused(_interactor):
-	interact_mesh.material_override = focused_material
+	interact_mesh.material_overlay = highlight_material
 
 
 func _on_interacted(_interactor):
@@ -25,4 +20,4 @@ func _on_interacted(_interactor):
 
 
 func _on_unfocused(_interactor):
-	interact_mesh.material_override = null
+	interact_mesh.material_overlay = null

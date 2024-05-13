@@ -1,7 +1,7 @@
 extends "res://scripts/Interactable.gd"
 class_name Cell
 
-const State = KarnaughMachine.State
+const State = Constants.State
 const STATE_STRING = {State.OFF: "0", State.ON: "1", State.IGNORE: "X"}
 
 @onready var karnaugh_machine: KarnaughMachine = owner.get_node("%KarnaughMachine")
@@ -15,6 +15,18 @@ const STATE_STRING = {State.OFF: "0", State.ON: "1", State.IGNORE: "X"}
 	set(value):
 		state = value
 		$StateLabel.text = STATE_STRING[value]
+
+var group_idx: int = -1:
+	set(value):
+		group_idx = value
+		if group_idx == -1:
+			$InteractMesh.material_override = null
+		else:
+			var group_mesh: Material = $InteractMesh.mesh.material.duplicate()
+			group_mesh.albedo_color = Constants.GROUP_COLORS[group_idx]
+			$InteractMesh.material_override = group_mesh
+			
+
 
 #region Grid position getters
 var gray_id: int:
@@ -55,5 +67,13 @@ func get_neighbour(v: Vector2i) -> Cell:
 func toggle_state():
 	state = ((state + 1) % State.size()) as State
 
-func _on_interacted(_interactor):
-	left.toggle_state()
+func toggle_group(idx: int):
+	if group_idx != -1:
+		karnaugh_machine.remove_cell_from_group(self, group_idx)
+		group_idx = -1
+	else:
+		karnaugh_machine.add_cell_to_group(self, idx)
+		group_idx = idx
+
+func _on_interacted(interactor):
+	toggle_group(interactor.owner.selected_group_id)
