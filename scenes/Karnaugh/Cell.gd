@@ -58,6 +58,9 @@ var down: Cell:
 
 static func xy2id(v: Vector2i) -> int:
 	return v.y*4 + v.x
+	
+static func id2xy(i: int) -> Vector2i:
+	return Vector2i(i % 4, i / floor(4))
 
 func get_neighbour(v: Vector2i) -> Cell:
 	var p = grid_pos + v

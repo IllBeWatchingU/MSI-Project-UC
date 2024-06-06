@@ -9,6 +9,7 @@ func _input(event):
 	super(event)
 	
 	if event.is_action_pressed("CycleItemUp"):
+		print(owner)
 		selected_group_id = posmod(selected_group_id + 1, Constants.GROUP_COUNT)
 	if event.is_action_pressed("CycleItemDown"):
 		selected_group_id = posmod(selected_group_id - 1, Constants.GROUP_COUNT)

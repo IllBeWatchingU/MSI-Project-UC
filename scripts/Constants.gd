@@ -14,6 +14,8 @@ const GROUP_COLORS = [
 	Color("C2A3A3"),
 	]
 
+const ISLAND_DIMS = [1, 2, 4]
+const ISLAND_SIZES = [1, 2, 4, 8, 16]
 const ISLAND_CONFIGURATIONS = {
 	1: [Vector2i(1, 1)],
 	2: [Vector2i(1, 2), Vector2i(2, 1)],
