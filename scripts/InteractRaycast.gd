@@ -1,4 +1,7 @@
+class_name InteractRaycast
 extends RayCast3D
+
+signal cell_updated
 
 @onready var interact_key = InputMap.action_get_events("Interact")[0].as_text_physical_keycode()
 

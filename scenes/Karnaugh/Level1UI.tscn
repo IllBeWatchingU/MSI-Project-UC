@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://66xsspgr5vgo"]
+
+[ext_resource type="Script" path="res://scenes/Karnaugh/Level1UI.gd" id="1_3ryar"]
+[ext_resource type="LabelSettings" uid="uid://ddh8eoco74jms" path="res://scenes/Karnaugh/UILabelSettings.tres" id="2_deo5c"]
+
+[node name="Level1UI" type="Control"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("1_3ryar")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -339.0
+offset_top = -114.0
+offset_right = -30.0
+offset_bottom = -28.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+
+[node name="GroupLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Groups Created: 0"
+label_settings = ExtResource("2_deo5c")
+horizontal_alignment = 2
+
+[node name="SelectionLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Cells Selected: 0"
+label_settings = ExtResource("2_deo5c")
+horizontal_alignment = 2
+
+[node name="ConfirmKeyLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Press <key> to confirm selection"
+label_settings = ExtResource("2_deo5c")
+horizontal_alignment = 2
