@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://crrsm1tcdluy7"]
+[gd_scene load_steps=5 format=3 uid="uid://crrsm1tcdluy7"]
 
 [ext_resource type="Script" path="res://scripts/LevelSelectButtons.gd" id="1_o6m1g"]
 [ext_resource type="PackedScene" uid="uid://i0sfj7yfh75v" path="res://scenes/Karnaugh/Level1.tscn" id="2_uuw1e"]
 [ext_resource type="PackedScene" uid="uid://1rry81l46ffo" path="res://scenes/Multiplexer/MultiplexLevel.tscn" id="3_050ni"]
+[ext_resource type="PackedScene" uid="uid://c8ub5prxpvumm" path="res://scenes/LogicGates/Level2.tscn" id="3_vbvvd"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -51,6 +52,7 @@ grow_vertical = 2
 theme_override_constants/separation = 20
 script = ExtResource("1_o6m1g")
 level1Scene = ExtResource("2_uuw1e")
+level2Scene = ExtResource("3_vbvvd")
 level3Scene = ExtResource("3_050ni")
 
 [node name="Level1" type="Button" parent="Buttons"]

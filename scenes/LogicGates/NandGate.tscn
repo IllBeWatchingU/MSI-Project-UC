@@ -1,0 +1,111 @@
+[gd_scene load_steps=12 format=3 uid="uid://cygpivf14h57n"]
+
+[sub_resource type="GDScript" id="GDScript_qk217"]
+script/source = "extends \"res://scripts/Interactable.gd\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	pass
+
+
+func _on_interacted(interactor):
+	queue_free()
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_261lt"]
+size = Vector3(0.602676, 0.293518, 0.0971375)
+
+[sub_resource type="BoxMesh" id="BoxMesh_egwh4"]
+size = Vector3(0.4, 0.3, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_110ae"]
+albedo_color = Color(0.498039, 1, 1, 1)
+
+[sub_resource type="GDScript" id="GDScript_gt7lh"]
+script/source = "extends MeshInstance3D
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="BoxMesh" id="BoxMesh_e26k8"]
+size = Vector3(0.1, 0.05, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0rupa"]
+albedo_color = Color(0.25, 1, 0, 1)
+
+[sub_resource type="GDScript" id="GDScript_p8gfu"]
+script/source = "extends MeshInstance3D
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6sd0o"]
+albedo_color = Color(0.25098, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cxwcx"]
+size = Vector3(0.1, 0.05, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wydm8"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="NandGate" type="StaticBody3D"]
+collision_layer = 3
+script = SubResource("GDScript_qk217")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000258088, -9.15527e-05, -7.62939e-05)
+shape = SubResource("BoxShape3D_261lt")
+
+[node name="GateBody" type="Node3D" parent="."]
+
+[node name="Body" type="MeshInstance3D" parent="GateBody"]
+mesh = SubResource("BoxMesh_egwh4")
+surface_material_override/0 = SubResource("StandardMaterial3D_110ae")
+script = SubResource("GDScript_gt7lh")
+
+[node name="Label3D" type="Label3D" parent="GateBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.051)
+text = "NAND"
+font_size = 23
+
+[node name="Input" type="Node3D" parent="."]
+
+[node name="InputA" type="MeshInstance3D" parent="Input"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.1, 0)
+mesh = SubResource("BoxMesh_e26k8")
+surface_material_override/0 = SubResource("StandardMaterial3D_0rupa")
+script = SubResource("GDScript_p8gfu")
+
+[node name="InputB" type="MeshInstance3D" parent="Input"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, -0.1, 0)
+mesh = SubResource("BoxMesh_e26k8")
+surface_material_override/0 = SubResource("StandardMaterial3D_6sd0o")
+
+[node name="Output" type="Node3D" parent="."]
+
+[node name="Output" type="MeshInstance3D" parent="Output"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 0)
+mesh = SubResource("BoxMesh_cxwcx")
+surface_material_override/0 = SubResource("StandardMaterial3D_wydm8")
+
+[connection signal="interacted" from="." to="." method="_on_interacted"]

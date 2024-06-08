@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cis8glfj47vl6"]
+
+[ext_resource type="Script" path="res://scenes/LogicGates/Board.gd" id="1_mjgh4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4kxtc"]
+size = Vector3(9, 2.8, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pfhxq"]
+albedo_color = Color(1, 0.698039, 0.866667, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wg52i"]
+size = Vector3(8.98698, 2.80493, 0.0812836)
+
+[node name="Board" type="StaticBody3D"]
+collision_layer = 3
+script = ExtResource("1_mjgh4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_4kxtc")
+surface_material_override/0 = SubResource("StandardMaterial3D_pfhxq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000480652, -0.0045166, -0.00681305)
+shape = SubResource("BoxShape3D_wg52i")
+
+[connection signal="focused" from="." to="." method="_on_focused"]
+[connection signal="interacted" from="." to="." method="_on_interacted"]
+[connection signal="unfocused" from="." to="." method="_on_unfocused"]
