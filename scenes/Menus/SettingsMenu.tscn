@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=3 uid="uid://bg65b4koeray1"]
+
+[ext_resource type="FontFile" uid="uid://c7r7x7h6jh0uq" path="res://assets/fonts/kenvector_future.ttf" id="1_bowq5"]
+[ext_resource type="Script" path="res://scripts/Menus/SettingsMenu.gd" id="1_hc1uw"]
+[ext_resource type="PackedScene" uid="uid://b4lojjmsbsnuh" path="res://scenes/Menus/SettingsMenuContainer.tscn" id="3_s8o1l"]
+
+[sub_resource type="Gradient" id="Gradient_sqvfn"]
+colors = PackedColorArray(0.505883, 0.545858, 0.916406, 1, 0.818344, 0.878603, 0.972449, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ddylg"]
+gradient = SubResource("Gradient_sqvfn")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vi34t"]
+bg_color = Color(0.513726, 0.596078, 0.803922, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2jtl4"]
+bg_color = Color(0.329412, 0.572549, 0.945098, 1)
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hc1uw")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_ddylg")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -48
+
+[node name="Label" type="Label" parent="TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("1_bowq5")
+theme_override_font_sizes/font_size = 32
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" parent="TextureRect/MarginContainer/VBoxContainer" instance=ExtResource("3_s8o1l")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ExitButton" type="Button" parent="TextureRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_bowq5")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_vi34t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2jtl4")
+text = "Exit"

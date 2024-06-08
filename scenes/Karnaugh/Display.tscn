@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bbibk23o6bw0j"]
 
-[ext_resource type="Script" path="res://scenes/Karnaugh/Display.gd" id="1_5pbih"]
+[ext_resource type="Script" path="res://scripts/KarnaughLogic/Display.gd" id="1_5pbih"]
 [ext_resource type="FontFile" uid="uid://bh7dwfqomgxjx" path="res://assets/fonts/Nexa-Heavy.ttf" id="1_52d1k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nsrwp"]

@@ -1,0 +1,117 @@
+[gd_scene load_steps=7 format=3 uid="uid://crrsm1tcdluy7"]
+
+[ext_resource type="FontFile" uid="uid://c7r7x7h6jh0uq" path="res://assets/fonts/kenvector_future.ttf" id="1_0dg7e"]
+[ext_resource type="Script" path="res://scripts/Menus/LevelSelectMenu.gd" id="1_hc3ww"]
+
+[sub_resource type="Gradient" id="Gradient_hpoc2"]
+colors = PackedColorArray(0.489218, 0.577116, 0.814937, 1, 0.863987, 0.865142, 0.950427, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nbj2t"]
+gradient = SubResource("Gradient_hpoc2")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fvuj7"]
+bg_color = Color(0.513726, 0.596078, 0.803922, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fcwh8"]
+bg_color = Color(0.329412, 0.572549, 0.945098, 1)
+
+[node name="LevelSelectScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hc3ww")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_nbj2t")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 70
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 120
+
+[node name="Separator" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Level" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("1_0dg7e")
+theme_override_font_sizes/font_size = 62
+text = "Select level"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Level1Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/Buttons"]
+custom_minimum_size = Vector2(400, 75)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_0dg7e")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_fvuj7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fcwh8")
+text = "level 1: karnaugh table"
+
+[node name="Level2Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/Buttons"]
+custom_minimum_size = Vector2(400, 75)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_0dg7e")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_fvuj7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fcwh8")
+text = "level 2: logic gates"
+
+[node name="Level3Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/Buttons"]
+custom_minimum_size = Vector2(400, 75)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_0dg7e")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_fvuj7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fcwh8")
+text = "Level 3: multiplexers"
+
+[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/Buttons"]
+custom_minimum_size = Vector2(400, 75)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_0dg7e")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_fvuj7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fcwh8")
+text = "Back to main menu"
