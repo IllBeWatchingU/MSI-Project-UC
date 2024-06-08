@@ -9,3 +9,5 @@ script = ExtResource("2_mtnrv")
 
 [node name="Level1UI" parent="CameraHolder" index="3" instance=ExtResource("2_2kbvq")]
 unique_name_in_owner = true
+
+[connection signal="cell_updated" from="CameraHolder/InteractRaycast" to="." method="_on_interact_raycast_cell_updated"]
