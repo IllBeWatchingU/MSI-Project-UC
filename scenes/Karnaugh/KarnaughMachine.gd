@@ -11,8 +11,18 @@ const State = Constants.State
 @export var output_display: Display
 
 var cell_values: Array[State]
-var groups: Array[Array] = []
+var player_islands: Array[Island]
+var min_islands: Array[Island]
+var min_function: String
 
+var cell_selection: Array[int]:
+	get: #Call each cell and check selected
+		var result: Array[int] = []
+		for i in range(16):
+			var cell = get_cell_by_id(i)
+			if(cell.selected): result.append(i)
+		return result
+		
 class Island:
 	enum letr {
 		A = 0x80, AN = 0x40,
@@ -81,21 +91,11 @@ class Island:
 		for island in copy:
 			island_map |= island.bitmap
 		return island_map | bitmap != island_map
-		
-	func adds_anything_new2(islands: Array[Island]) -> bool:
-		var copy = islands.duplicate()
-		copy.erase(self)
-		
-		var island_map := 0
-		for island in copy:
-			island_map |= island.bitmap
-		return island_map | bitmap != island_map
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
 	
-	for i in range(Constants.GROUP_COUNT):
-		groups.append([])
 	reset_button.get_node("Button").reset_pressed.connect(randomize_input)
 	
 	randomize_input()
@@ -110,23 +110,44 @@ func randomize_input():
 	
 	input_display.set_input_string(cell_values)
 	
-	solve()
+	solve() #TODO: save result somewhere
 	
-func add_cell_to_group(cell: Cell, group_id: int):
-	groups[group_id].append(cell)
-	print(groups)
-	
-func remove_cell_from_group(cell: Cell, group_id: int):
-	var idx := groups[group_id].find(cell)
-	if idx != -1: 
-		groups[group_id].remove_at(idx)
-	print(groups)
+func add_new_island() -> void:
+	# Verify we selected the right number of cells
+	var size := cell_selection.size()
+	if Constants.ISLAND_SIZES.has(size):
+		var island: Island = null
+		for id in cell_selection:
+			var cell := get_cell_by_id(id)
+			for shape in Constants.ISLAND_CONFIGURATIONS[size]:
+				#Check if cell is top right corner of island
+				var isl := get_valid_shape(cell.grid_pos, shape, true)
+				island = isl if isl else island
+		
+		if island:
+			player_islands.append(island)
+		
+	deselect_all()
 
-#regin Solver
+func get_valid_shape(start: Vector2i, shape: Vector2i, check_selected: bool = false) -> Island:
+		var check: Callable
+		if check_selected:
+			check = func(cell: Cell): return cell.selected
+		else:
+			check = func(cell: Cell): return cell.state == State.ON
+
+		for x in shape.x:
+			for y in shape.y:
+				var v := (start + Vector2i(x,y)) % 4
+				if not check.call(get_cell_by_xy(v)): return null
+		return Island.new(start, shape)
+				
+func deselect_all() -> void:
+	for id in cell_selection:
+		get_cell_by_id(id).selected = false
+
+#region Solvers
 func solve() -> void:
-	var min_islands: Array[Island] = []
-	var min_string: String = ""
-	
 	# Get all possible islands
 	for i in range(16):
 		var new_islands := find_islands(get_cell_by_id(i))
@@ -149,12 +170,9 @@ func solve() -> void:
 	min_islands = min_islands.filter(func(x: Island): return x.adds_anything_new(min_islands, true))
 	
 	for island in min_islands:
-		min_string += "%s + " % island.function
+		min_function += "%s + " % island.function
 	
-	min_string = min_string.left(-3)
-	
-	print(min_islands)
-	print(min_string)
+	min_function = min_function.left(-3)
 	
 func find_islands(cell: Cell) -> Array[Island]:
 	#Island1
@@ -222,7 +240,6 @@ func clip_to_dim(d: int) -> int:
 	return r
 
 #endregion Solver
-
 
 #region Helpers
 func get_cell_by_xy(v: Vector2i) -> Cell:

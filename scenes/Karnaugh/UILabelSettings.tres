@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://ddh8eoco74jms"]
+
+[ext_resource type="FontFile" uid="uid://bh7dwfqomgxjx" path="res://assets/fonts/Nexa-Heavy.ttf" id="1_velhj"]
+
+[resource]
+font = ExtResource("1_velhj")
+font_size = 20
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
