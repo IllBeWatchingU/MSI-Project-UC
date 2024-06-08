@@ -15,6 +15,8 @@ var player_islands: Array[Island]
 var min_islands: Array[Island]
 var min_function: String
 
+var instanciated_island_markers: Array[IslandMarker] 
+
 var cell_selection: Array[int]:
 	get: #Call each cell and check selected
 		var result: Array[int] = []
@@ -70,7 +72,14 @@ class Island:
 					result += "%s" % letr.find_key(flag)
 			
 			return result.replace("N", String.chr(0x0304))
-			
+	var corners: Array[Vector2i]:
+		get:
+			var result: Array[Vector2i] = []
+			result.append(start)
+			result.append((start + (shape - Vector2i.ONE) * Vector2i.RIGHT) % 4)
+			result.append(end)
+			result.append((start + (shape - Vector2i.ONE) * Vector2i.DOWN) % 4)
+			return result
 	
 	func _init(p_start: Vector2i, p_shape: Vector2i):
 		self.start = p_start
@@ -92,6 +101,13 @@ class Island:
 			island_map |= island.bitmap
 		return island_map | bitmap != island_map
 	
+	func normalized() -> Island:
+		var new_start := start
+		for i in range(2):
+			if shape[i] == 4:
+				new_start[i] = 0
+		return Island.new(new_start, shape)
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
@@ -101,6 +117,12 @@ func _ready():
 	randomize_input()
 
 func randomize_input():
+	for marker in instanciated_island_markers:
+		marker.queue_free()
+	player_islands = []
+	instanciated_island_markers = []
+	deselect_all()
+	
 	cell_values = []
 	var table = [State.OFF, State.ON]
 	if generate_dont_cares: table.append(State.IGNORE)
@@ -110,7 +132,7 @@ func randomize_input():
 	
 	input_display.set_input_string(cell_values)
 	
-	solve() #TODO: save result somewhere
+	solve()
 	
 func add_new_island() -> void:
 	# Verify we selected the right number of cells
@@ -126,6 +148,11 @@ func add_new_island() -> void:
 		
 		if island:
 			player_islands.append(island)
+			for i in range(4):
+				var cell = get_cell_by_xy(island.corners[i])
+				var marker = IslandMarker.spawn(i, player_islands.size() - 1)
+				cell.add_child(marker)
+				instanciated_island_markers.append(marker)
 		
 	deselect_all()
 
@@ -140,7 +167,7 @@ func get_valid_shape(start: Vector2i, shape: Vector2i, check_selected: bool = fa
 			for y in shape.y:
 				var v := (start + Vector2i(x,y)) % 4
 				if not check.call(get_cell_by_xy(v)): return null
-		return Island.new(start, shape)
+		return Island.new(start, shape).normalized()
 				
 func deselect_all() -> void:
 	for id in cell_selection:

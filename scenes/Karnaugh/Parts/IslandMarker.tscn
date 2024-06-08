@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0xr1fevivlyp"]
+
+[ext_resource type="Script" path="res://scripts/KarnaughLogic/IslandMarker.gd" id="1_qqpyf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w7e36"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ab838"]
+material = SubResource("StandardMaterial3D_w7e36")
+size = Vector3(0.3, 0.05, 0.025)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wml7p"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_puqwl"]
+material = SubResource("StandardMaterial3D_wml7p")
+size = Vector3(0.05, 0.3, 0.025)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_742kw"]
+size = Vector3(0.3, 0.3, 0.025)
+
+[node name="IslandMarker" type="StaticBody3D"]
+script = ExtResource("1_qqpyf")
+
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
+
+[node name="Arm1" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
+mesh = SubResource("BoxMesh_ab838")
+skeleton = NodePath("../..")
+
+[node name="Arm2" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, 0, 0)
+mesh = SubResource("BoxMesh_puqwl")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
+shape = SubResource("BoxShape3D_742kw")
