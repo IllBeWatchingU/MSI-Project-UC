@@ -1,9 +1,16 @@
 extends Control
 
-var color_group: int = 0:
-	set(value):
-		color_group = value
-		$HBoxContainer/ColorRect.color = Constants.GROUP_COLORS[color_group]
+@onready var confirm_key = InputMap.action_get_events("ConfirmSelection")[0].as_text_physical_keycode()
+
+var group_count: int = 0:
+	set(value): # Update label
+		group_count = value
+		$VBoxContainer/GroupLabel.text = "Groups Created: %d" % group_count
+var selection_count: int = 0:
+	set(value): # Update label
+		selection_count = value
+		$VBoxContainer/SelectionLabel.text = "Cells Selected: %d" % selection_count
+
 		
 func _ready():
-	color_group = 0
+	$VBoxContainer/ConfirmKeyLabel.text = "Press '%s' to confirm selection" % confirm_key 

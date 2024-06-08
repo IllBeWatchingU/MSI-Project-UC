@@ -16,15 +16,24 @@ const STATE_STRING = {State.OFF: "0", State.ON: "1", State.IGNORE: "X"}
 		state = value
 		$StateLabel.text = STATE_STRING[value]
 
-var group_idx: int = -1:
-	set(value):
-		group_idx = value
-		if group_idx == -1:
+var selected: bool = false:
+	set(value): #update color value with it
+		if selected:
+			color_id = -1
+			selected = false
+		else:
+			color_id = karnaugh_machine.player_islands.size()
+			selected = true
+var color_id: int = -1:
+	set(value): # Change color
+		color_id = value
+		if color_id == -1:
 			$InteractMesh.material_override = null
 		else:
 			var group_mesh: Material = $InteractMesh.mesh.material.duplicate()
-			group_mesh.albedo_color = Constants.GROUP_COLORS[group_idx]
+			group_mesh.albedo_color = Constants.GROUP_COLORS[color_id]
 			$InteractMesh.material_override = group_mesh
+
 			
 
 
@@ -54,26 +63,22 @@ var up: Cell:
 	
 var down: Cell:
 	get: return get_neighbour(Vector2i.DOWN)
-#endregion
-
-static func xy2id(v: Vector2i) -> int:
-	return v.y*4 + v.x
-
+	
 func get_neighbour(v: Vector2i) -> Cell:
 	var p = grid_pos + v
 	p = Vector2i(posmod(p.x, 4), posmod(p.y, 4))
 	return karnaugh_machine.get_cell_by_xy(p)
+#endregion
+
+static func xy2id(v: Vector2i) -> int:
+	return v.y*4 + v.x
+	
+static func id2xy(i: int) -> Vector2i:
+	return Vector2i(i % 4, i / floor(4))
 
 func toggle_state():
 	state = ((state + 1) % State.size()) as State
 
-func toggle_group(idx: int):
-	if group_idx != -1:
-		karnaugh_machine.remove_cell_from_group(self, group_idx)
-		group_idx = -1
-	else:
-		karnaugh_machine.add_cell_to_group(self, idx)
-		group_idx = idx
-
-func _on_interacted(interactor):
-	toggle_group(interactor.owner.selected_group_id)
+func _on_interacted(interactor: InteractRaycast):
+	selected = not selected
+	interactor.cell_updated.emit()
