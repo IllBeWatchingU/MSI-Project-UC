@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4lojjmsbsnuh"]
+[gd_scene load_steps=3 format=3 uid="uid://b4lojjmsbsnuh"]
 
 [ext_resource type="FontFile" uid="uid://c7r7x7h6jh0uq" path="res://assets/fonts/kenvector_future.ttf" id="1_0fvr5"]
+[ext_resource type="PackedScene" uid="uid://drrcangs32okl" path="res://scenes/Menus/AudioSliderSettings.tscn" id="2_158v0"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -40,15 +41,27 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Sound/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Sound/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Sound/MarginContainer/ScrollContainer"]
 layout_mode = 2
 theme_override_constants/separation = 64
-alignment = 1
 
-[node name="Label" type="Label" parent="TabContainer/Sound/MarginContainer/VBoxContainer"]
+[node name="AudioSliderSettings" parent="TabContainer/Sound/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_158v0")]
 layout_mode = 2
-text = "Dupa
-"
+
+[node name="AudioSliderSettings2" parent="TabContainer/Sound/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_158v0")]
+layout_mode = 2
+bus_name = "UI"
+
+[node name="AudioSliderSettings3" parent="TabContainer/Sound/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_158v0")]
+layout_mode = 2
+bus_name = "Music"
+
+[node name="AudioSliderSettings4" parent="TabContainer/Sound/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_158v0")]
+layout_mode = 2
+bus_name = "SFX"
 
 [node name="Player" type="TabBar" parent="TabContainer"]
 visible = false

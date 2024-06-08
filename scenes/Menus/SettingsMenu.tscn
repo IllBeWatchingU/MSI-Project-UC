@@ -61,7 +61,7 @@ text = "Options"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" parent="TextureRect/MarginContainer/VBoxContainer" instance=ExtResource("3_s8o1l")]
+[node name="OptionsBox" parent="TextureRect/MarginContainer/VBoxContainer" instance=ExtResource("3_s8o1l")]
 layout_mode = 2
 size_flags_vertical = 3
 
