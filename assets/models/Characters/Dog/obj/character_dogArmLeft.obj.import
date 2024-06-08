@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://02tb1luar28g"
+path="res://.godot/imported/character_dogArmLeft.obj-b04ef6df5ca88bda131ef339d8f90792.mesh"
+
+[deps]
+
+files=["res://.godot/imported/character_dogArmLeft.obj-b04ef6df5ca88bda131ef339d8f90792.mesh"]
+
+source_file="res://assets/models/Characters/Dog/obj/character_dogArmLeft.obj"
+dest_files=["res://.godot/imported/character_dogArmLeft.obj-b04ef6df5ca88bda131ef339d8f90792.mesh", "res://.godot/imported/character_dogArmLeft.obj-b04ef6df5ca88bda131ef339d8f90792.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

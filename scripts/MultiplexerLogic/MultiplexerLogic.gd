@@ -36,6 +36,7 @@ func _compute_result():
 	var res = 0
 	for a in range(selectors.size()):
 		res += selectors[a].text.to_int() * (2 ** a)
+		print("a=", a, "selector = ", selectors[a], "res = ", res)
 		
 	return res
 

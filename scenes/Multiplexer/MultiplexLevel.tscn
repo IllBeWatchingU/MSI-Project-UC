@@ -139,8 +139,8 @@ script = ExtResource("4_i1we0")
 [node name="SingleMpx" type="Node3D" parent="NumberMultiplexers"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.755476, -1.16022, 4.94852)
 
-[node name="Mpx8" parent="NumberMultiplexers/SingleMpx" instance=ExtResource("3_36lhk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.294582, 1.4541, -4.40542)
+[node name="Mpx1" parent="NumberMultiplexers/SingleMpx" instance=ExtResource("3_36lhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.454, -4.405)
 
 [node name="TwoMpx" type="Node3D" parent="NumberMultiplexers"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.755476, -1.16022, 4.94852)
