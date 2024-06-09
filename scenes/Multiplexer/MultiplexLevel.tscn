@@ -1,6 +1,7 @@
-[gd_scene load_steps=34 format=3 uid="uid://1rry81l46ffo"]
+[gd_scene load_steps=36 format=3 uid="uid://1rry81l46ffo"]
 
 [ext_resource type="PackedScene" uid="uid://l2q8vmjedkst" path="res://scenes/Core/Player.tscn" id="1_23on8"]
+[ext_resource type="Script" path="res://scripts/MultiplexerLogic/MultiplexLevel.gd" id="1_472rr"]
 [ext_resource type="PackedScene" uid="uid://capd60rcoos8r" path="res://assets/models/GLB format/top-large.glb" id="1_yf17j"]
 [ext_resource type="Texture2D" uid="uid://mcpasq1rq5iv" path="res://assets/textures/wood_floor_diff_4k.png" id="2_ae52f"]
 [ext_resource type="PackedScene" uid="uid://bxuif5eyw3uay" path="res://scenes/Multiplexer/Sign.tscn" id="3_7mmhe"]
@@ -16,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://ddifhrkncyjax" path="res://assets/models/GLB format/cover-stripe-bar.glb" id="9_tcdx3"]
 [ext_resource type="PackedScene" uid="uid://ba4ca8qft67nj" path="res://assets/models/GLB format/display-wall-wide.glb" id="10_yipil"]
 [ext_resource type="AudioStream" uid="uid://0flc7sbjldbm" path="res://assets/audio/music/Cyberpunk Moonlight Sonata.mp3" id="16_ryxog"]
+[ext_resource type="PackedScene" uid="uid://hq2b8bigt0xm" path="res://scenes/Multiplexer/ResultButton.tscn" id="18_j07el"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8j2q7"]
 size = Vector3(10, 0.25, 10)
@@ -83,6 +85,7 @@ height = 0.131
 radius = 0.2
 
 [node name="World" type="Node3D"]
+script = ExtResource("1_472rr")
 
 [node name="Room" type="Node3D" parent="."]
 
@@ -181,7 +184,7 @@ text = "Result:"
 
 [node name="Result" type="Label3D" parent="Deco/Display"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.64369, 1.79153, -2.919)
-text = "Failed"
+text = "?"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_eqgpk")
@@ -205,7 +208,6 @@ script = ExtResource("4_i1we0")
 
 [node name="SingleMpx" type="Node3D" parent="NumberMultiplexers"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.755476, -1.16022, 4.94852)
-visible = false
 
 [node name="Mpx1" parent="NumberMultiplexers/SingleMpx" instance=ExtResource("3_36lhk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.58369, -4.405)
@@ -222,6 +224,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4489, 1.584, -4.405)
 
 [node name="ThreeMpx" type="Node3D" parent="NumberMultiplexers"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.755476, -1.16022, 3.94852)
+visible = false
 
 [node name="Mpx1" parent="NumberMultiplexers/ThreeMpx" instance=ExtResource("3_36lhk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.69143, 1.584, -4.405)
@@ -268,6 +271,10 @@ shape = SubResource("CylinderShape3D_dkque")
 stream = ExtResource("16_ryxog")
 volume_db = -12.0
 autoplay = true
+
+[node name="ResultButton" parent="." instance=ExtResource("18_j07el")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 4.87882, 0.735963, -2.93054)
+action_text = "Check answer"
 
 [connection signal="focused" from="LabelNumber/ButtonRight" to="LabelNumber/ButtonRight" method="_on_focused"]
 [connection signal="interacted" from="LabelNumber/ButtonRight" to="LabelNumber/ButtonRight" method="_on_interacted"]

@@ -1,3 +1,4 @@
+class_name Multiplex
 extends StaticBody3D
 
 var registers = Array()
@@ -21,9 +22,11 @@ func _ready():
 	for a in selectors:
 		a.text_changed.connect(_on_text_changed)
 	
-	#print(registers)
-	#print(selectors)
-	#print(Result.text)
+func get_register(idx : int):
+	return registers[idx].text.to_int()
+	
+func get_selector(idx : int):
+	return selectors[idx].text.to_int()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
