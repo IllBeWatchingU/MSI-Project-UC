@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://1rry81l46ffo"]
+[gd_scene load_steps=34 format=3 uid="uid://1rry81l46ffo"]
 
 [ext_resource type="PackedScene" uid="uid://l2q8vmjedkst" path="res://scenes/Core/Player.tscn" id="1_23on8"]
 [ext_resource type="PackedScene" uid="uid://capd60rcoos8r" path="res://assets/models/GLB format/top-large.glb" id="1_yf17j"]
@@ -15,9 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://dbged3ilv30x1" path="res://assets/models/GLB format/computer-screen.glb" id="8_qnaha"]
 [ext_resource type="PackedScene" uid="uid://ddifhrkncyjax" path="res://assets/models/GLB format/cover-stripe-bar.glb" id="9_tcdx3"]
 [ext_resource type="PackedScene" uid="uid://ba4ca8qft67nj" path="res://assets/models/GLB format/display-wall-wide.glb" id="10_yipil"]
-[ext_resource type="PackedScene" uid="uid://jj3np6lhmd6d" path="res://assets/models/GLB format/box-large.glb" id="13_h83se"]
-[ext_resource type="PackedScene" uid="uid://0up66a40frdq" path="res://assets/models/GLB format/box-long.glb" id="14_jiylu"]
-[ext_resource type="PackedScene" uid="uid://b7v381nq6g3f6" path="res://assets/models/GLB format/box-small.glb" id="15_uipuk"]
 [ext_resource type="AudioStream" uid="uid://0flc7sbjldbm" path="res://assets/audio/music/Cyberpunk Moonlight Sonata.mp3" id="16_ryxog"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8j2q7"]
@@ -266,15 +263,6 @@ mesh = SubResource("PrismMesh_mtix8")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LabelNumber/ButtonLeft"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00788748, -0.0343969, 0)
 shape = SubResource("CylinderShape3D_dkque")
-
-[node name="box-large2" parent="." instance=ExtResource("13_h83se")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
-
-[node name="box-long2" parent="." instance=ExtResource("14_jiylu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
-
-[node name="box-small2" parent="." instance=ExtResource("15_uipuk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_ryxog")
