@@ -1,0 +1,135 @@
+[gd_scene load_steps=8 format=3 uid="uid://b4lojjmsbsnuh"]
+
+[ext_resource type="FontFile" uid="uid://c7r7x7h6jh0uq" path="res://assets/fonts/kenvector_future.ttf" id="1_0fvr5"]
+[ext_resource type="PackedScene" uid="uid://drrcangs32okl" path="res://scenes/Menus/AudioSliderSettings.tscn" id="2_158v0"]
+[ext_resource type="Script" path="res://scripts/Menus/PlayerNameChange.gd" id="3_ucg55"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ag8ut"]
+bg_color = Color(0.513726, 0.596078, 0.803922, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_he0nh"]
+bg_color = Color(0.329412, 0.572549, 0.945098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ikw8d"]
+bg_color = Color(0.117647, 0.34902, 0.690196, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f8jhv"]
+bg_color = Color(0.368627, 0.368627, 0.368627, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 60.0
+offset_right = -100.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_0fvr5")
+tab_alignment = 1
+tabs_rearrange_group = 0
+
+[node name="Sound" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_0fvr5")
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Sound"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Sound/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Sound/MarginContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="AudioSliderSettings" parent="TabContainer/Sound/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_158v0")]
+layout_mode = 2
+
+[node name="AudioSliderSettings2" parent="TabContainer/Sound/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_158v0")]
+layout_mode = 2
+bus_name = "UI"
+
+[node name="AudioSliderSettings3" parent="TabContainer/Sound/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_158v0")]
+layout_mode = 2
+bus_name = "Music"
+
+[node name="AudioSliderSettings4" parent="TabContainer/Sound/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_158v0")]
+layout_mode = 2
+bus_name = "SFX"
+
+[node name="Player" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_0fvr5")
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Player"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Player/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 42
+script = ExtResource("3_ucg55")
+
+[node name="PlayerName" type="Label" parent="TabContainer/Player/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_0fvr5")
+theme_override_font_sizes/font_size = 30
+text = "Player Name"
+
+[node name="VSeparator" type="VSeparator" parent="TabContainer/Player/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/Player/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Player"
+placeholder_text = "Player Name"
+
+[node name="SaveButton" type="Button" parent="TabContainer/Player/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
+theme_override_fonts/font = ExtResource("1_0fvr5")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_ag8ut")
+theme_override_styles/hover = SubResource("StyleBoxFlat_he0nh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ikw8d")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_f8jhv")
+text = "Save"

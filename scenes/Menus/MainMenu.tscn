@@ -1,0 +1,198 @@
+[gd_scene load_steps=14 format=3 uid="uid://dxcqfix6rnkvj"]
+
+[ext_resource type="Script" path="res://scripts/Menus/MainMenu.gd" id="1_ivgqu"]
+[ext_resource type="PackedScene" uid="uid://bguyllosr2cyx" path="res://scenes/Core/UI_Sounds.tscn" id="2_uvpyf"]
+[ext_resource type="FontFile" uid="uid://c7r7x7h6jh0uq" path="res://assets/fonts/kenvector_future.ttf" id="4_ka0ee"]
+[ext_resource type="PackedScene" uid="uid://bg65b4koeray1" path="res://scenes/Menus/SettingsMenu.tscn" id="5_bqhgf"]
+[ext_resource type="PackedScene" uid="uid://crrsm1tcdluy7" path="res://scenes/Menus/LevelSelectMenu.tscn" id="5_sfge2"]
+[ext_resource type="PackedScene" uid="uid://i0sfj7yfh75v" path="res://scenes/Karnaugh/Level1.tscn" id="6_k5q2l"]
+[ext_resource type="PackedScene" uid="uid://1rry81l46ffo" path="res://scenes/Multiplexer/MultiplexLevel.tscn" id="7_w8hfj"]
+[ext_resource type="PackedScene" uid="uid://coxdctl7cyt6x" path="res://scenes/Menus/LeaderboardMenu.tscn" id="8_5o26k"]
+[ext_resource type="AudioStream" uid="uid://bdyx6nwqvf1nn" path="res://assets/audio/music/ambientmain_0.ogg" id="9_it6ou"]
+
+[sub_resource type="Gradient" id="Gradient_wkbg1"]
+colors = PackedColorArray(0.489218, 0.577116, 0.814937, 1, 0.863987, 0.865142, 0.950427, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8lsmn"]
+gradient = SubResource("Gradient_wkbg1")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_15xra"]
+bg_color = Color(0.513726, 0.596078, 0.803922, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tqgku"]
+bg_color = Color(0.329412, 0.572549, 0.945098, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ivgqu")
+
+[node name="UISounds" parent="." instance=ExtResource("2_uvpyf")]
+root_path = NodePath("../AudioNode")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_8lsmn")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = 368.0
+offset_top = -70.0
+offset_right = 1327.0
+offset_bottom = 190.0
+color = Color(0.835294, 0.85098, 0.937255, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = -1221.0
+offset_top = -715.0
+offset_right = -298.0
+offset_bottom = -108.0
+color = Color(0.505882, 0.592157, 0.819608, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = -457.0
+offset_top = 141.0
+offset_right = -218.0
+offset_bottom = 629.0
+color = Color(0.588235, 0.654902, 0.85098, 1)
+
+[node name="AudioNode" type="Node" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="AudioNode"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 70
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AudioNode/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 80
+
+[node name="Separator" type="Control" parent="AudioNode/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GameTitle" type="Label" parent="AudioNode/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("4_ka0ee")
+theme_override_font_sizes/font_size = 62
+text = "Digital Circuits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AudioNode/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="AudioNode/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 2
+
+[node name="Separator2" type="Control" parent="AudioNode/MarginContainer/HBoxContainer/Buttons"]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="AudioNode/MarginContainer/HBoxContainer/Buttons"]
+custom_minimum_size = Vector2(400, 75)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ka0ee")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_15xra")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tqgku")
+text = "Play"
+
+[node name="SettingsButton" type="Button" parent="AudioNode/MarginContainer/HBoxContainer/Buttons"]
+custom_minimum_size = Vector2(400, 75)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ka0ee")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_15xra")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tqgku")
+text = "Settings"
+
+[node name="LeaderboardButton" type="Button" parent="AudioNode/MarginContainer/HBoxContainer/Buttons"]
+custom_minimum_size = Vector2(400, 75)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ka0ee")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_15xra")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tqgku")
+text = "Leaderboard"
+
+[node name="ExitButton" type="Button" parent="AudioNode/MarginContainer/HBoxContainer/Buttons"]
+custom_minimum_size = Vector2(400, 75)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ka0ee")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_15xra")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tqgku")
+text = "Exit
+"
+
+[node name="SettingsMenu" parent="AudioNode" instance=ExtResource("5_bqhgf")]
+visible = false
+
+[node name="LevelSelectMenu" parent="AudioNode" instance=ExtResource("5_sfge2")]
+visible = false
+level1Scene = ExtResource("6_k5q2l")
+level3Scene = ExtResource("7_w8hfj")
+
+[node name="LeaderboardMenu" parent="AudioNode" instance=ExtResource("8_5o26k")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 1140.0
+offset_bottom = 578.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_it6ou")
+volume_db = -11.243
+autoplay = true
+bus = &"Music"
+
+[connection signal="item_rect_changed" from="." to="." method="_on_item_rect_changed"]

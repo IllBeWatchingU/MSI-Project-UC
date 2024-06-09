@@ -1,11 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbxe2sjotghhe"]
+[gd_scene load_steps=8 format=3 uid="uid://dbxe2sjotghhe"]
 
 [ext_resource type="Script" path="res://scripts/MultiplexerLogic/MultiplexerButtons.gd" id="1_knd88"]
+[ext_resource type="Texture2D" uid="uid://cnoejpfe50cl1" path="res://assets/textures/concrete_layers_02_diff_4k.png" id="2_650lk"]
+[ext_resource type="Texture2D" uid="uid://cms5hw1v0acwj" path="res://assets/textures/concrete_layers_02_nor_gl_4k.png" id="3_3brsi"]
+[ext_resource type="Texture2D" uid="uid://6kagom3gvd0i" path="res://assets/textures/concrete_layers_02_rough_4k.png" id="4_nyxcm"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7e87"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ooedp"]
+albedo_texture = ExtResource("2_650lk")
+roughness_texture = ExtResource("4_nyxcm")
+normal_enabled = true
+normal_texture = ExtResource("3_3brsi")
 
 [sub_resource type="BoxMesh" id="BoxMesh_qt8ig"]
-material = SubResource("StandardMaterial3D_t7e87")
+material = SubResource("StandardMaterial3D_ooedp")
 size = Vector3(0.25, 0.15, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yjt5h"]

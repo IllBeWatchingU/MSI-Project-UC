@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=3 uid="uid://hq2b8bigt0xm"]
+
+[ext_resource type="Script" path="res://scripts/Core/Interactable.gd" id="1_6d3wv"]
+[ext_resource type="Texture2D" uid="uid://cnoejpfe50cl1" path="res://assets/textures/concrete_layers_02_diff_4k.png" id="2_7lljj"]
+[ext_resource type="Texture2D" uid="uid://cms5hw1v0acwj" path="res://assets/textures/concrete_layers_02_nor_gl_4k.png" id="3_h0jic"]
+[ext_resource type="Texture2D" uid="uid://6kagom3gvd0i" path="res://assets/textures/concrete_layers_02_rough_4k.png" id="4_un2lr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7e87"]
+albedo_texture = ExtResource("2_7lljj")
+roughness_texture = ExtResource("4_un2lr")
+normal_enabled = true
+normal_texture = ExtResource("3_h0jic")
+
+[sub_resource type="BoxMesh" id="BoxMesh_e4s7e"]
+material = SubResource("StandardMaterial3D_t7e87")
+size = Vector3(0.25, 0.15, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n4jru"]
+size = Vector3(0.25, 0.15, 0.25)
+
+[node name="ResultButton" type="StaticBody3D"]
+collision_layer = 3
+collision_mask = 0
+script = ExtResource("1_6d3wv")
+
+[node name="InteractMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_e4s7e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_n4jru")
+
+[connection signal="focused" from="." to="." method="_on_focused"]
+[connection signal="interacted" from="." to="." method="_on_interacted"]
+[connection signal="unfocused" from="." to="." method="_on_unfocused"]

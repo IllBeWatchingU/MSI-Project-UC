@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://66xsspgr5vgo"]
 
-[ext_resource type="Script" path="res://scenes/Karnaugh/Level1UI.gd" id="1_3ryar"]
+[ext_resource type="Script" path="res://scripts/KarnaughLogic/Level1UI.gd" id="1_3ryar"]
 [ext_resource type="LabelSettings" uid="uid://ddh8eoco74jms" path="res://scenes/Karnaugh/UILabelSettings.tres" id="2_deo5c"]
 
 [node name="Level1UI" type="Control"]

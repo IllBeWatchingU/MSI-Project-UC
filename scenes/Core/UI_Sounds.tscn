@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bguyllosr2cyx"]
+
+[ext_resource type="Script" path="res://scripts/Core/UISounds.gd" id="1_83xh5"]
+
+[node name="UISounds" type="Node"]
+script = ExtResource("1_83xh5")
+root_path = NodePath("../Buttons")

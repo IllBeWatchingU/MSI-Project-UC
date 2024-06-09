@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bvfnq7amluk42"]
 
-[ext_resource type="Script" path="res://scenes/Karnaugh/KarnaughMachine.gd" id="1_4em16"]
 [ext_resource type="FontFile" uid="uid://bh7dwfqomgxjx" path="res://assets/fonts/Nexa-Heavy.ttf" id="1_48ina"]
+[ext_resource type="Script" path="res://scripts/KarnaughLogic/KarnaughMachine.gd" id="1_88mt4"]
 [ext_resource type="PackedScene" uid="uid://dts2vj7khyqdy" path="res://scenes/Karnaugh/Cell.tscn" id="2_4ufnn"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_jt8ll"]
@@ -21,7 +21,7 @@ material = SubResource("StandardMaterial3D_2in02")
 size = Vector3(2.4, 2.4, 0.8)
 
 [node name="KarnaughMachine" type="StaticBody3D"]
-script = ExtResource("1_4em16")
+script = ExtResource("1_88mt4")
 
 [node name="AB" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4)
