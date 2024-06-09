@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dxcqfix6rnkvj"]
+[gd_scene load_steps=14 format=3 uid="uid://dxcqfix6rnkvj"]
 
 [ext_resource type="Script" path="res://scripts/Menus/MainMenu.gd" id="1_ivgqu"]
 [ext_resource type="PackedScene" uid="uid://bguyllosr2cyx" path="res://scenes/Core/UI_Sounds.tscn" id="2_uvpyf"]
@@ -8,12 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://crrsm1tcdluy7" path="res://scenes/Menus/LevelSelectMenu.tscn" id="5_sfge2"]
 [ext_resource type="PackedScene" uid="uid://i0sfj7yfh75v" path="res://scenes/Karnaugh/Level1.tscn" id="6_k5q2l"]
 [ext_resource type="PackedScene" uid="uid://1rry81l46ffo" path="res://scenes/Multiplexer/MultiplexLevel.tscn" id="7_w8hfj"]
+[ext_resource type="PackedScene" uid="uid://coxdctl7cyt6x" path="res://scenes/Menus/LeaderboardMenu.tscn" id="8_5o26k"]
 
-[sub_resource type="Gradient" id="Gradient_0p7yj"]
+[sub_resource type="Gradient" id="Gradient_wkbg1"]
 colors = PackedColorArray(0.489218, 0.577116, 0.814937, 1, 0.863987, 0.865142, 0.950427, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_8lsmn"]
-gradient = SubResource("Gradient_0p7yj")
+gradient = SubResource("Gradient_wkbg1")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_15xra"]
 bg_color = Color(0.513726, 0.596078, 0.803922, 1)
@@ -95,7 +96,7 @@ theme_override_constants/margin_bottom = 70
 
 [node name="VBoxContainer" type="VBoxContainer" parent="AudioNode/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 120
+theme_override_constants/separation = 80
 
 [node name="Separator" type="Control" parent="AudioNode/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -145,6 +146,17 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_15xra")
 theme_override_styles/hover = SubResource("StyleBoxFlat_tqgku")
 text = "Settings"
 
+[node name="LeaderboardButton" type="Button" parent="AudioNode/MarginContainer/HBoxContainer/Buttons"]
+custom_minimum_size = Vector2(400, 75)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ka0ee")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_15xra")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tqgku")
+text = "Leaderboard"
+
 [node name="ExitButton" type="Button" parent="AudioNode/MarginContainer/HBoxContainer/Buttons"]
 custom_minimum_size = Vector2(400, 75)
 layout_mode = 2
@@ -164,6 +176,18 @@ visible = false
 visible = false
 level1Scene = ExtResource("6_k5q2l")
 level3Scene = ExtResource("7_w8hfj")
+
+[node name="LeaderboardMenu" parent="AudioNode" instance=ExtResource("8_5o26k")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 1140.0
+offset_bottom = 578.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_7m007")

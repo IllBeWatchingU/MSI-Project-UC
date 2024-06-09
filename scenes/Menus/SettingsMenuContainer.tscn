@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4lojjmsbsnuh"]
+[gd_scene load_steps=4 format=3 uid="uid://b4lojjmsbsnuh"]
 
 [ext_resource type="FontFile" uid="uid://c7r7x7h6jh0uq" path="res://assets/fonts/kenvector_future.ttf" id="1_0fvr5"]
 [ext_resource type="PackedScene" uid="uid://drrcangs32okl" path="res://scenes/Menus/AudioSliderSettings.tscn" id="2_158v0"]
+[ext_resource type="Script" path="res://scripts/Menus/PlayerNameChange.gd" id="3_ucg55"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -24,6 +25,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_0fvr5")
 tab_alignment = 1
+tabs_rearrange_group = 0
 
 [node name="Sound" type="TabBar" parent="TabContainer"]
 layout_mode = 2
@@ -85,6 +87,25 @@ layout_mode = 2
 theme_override_constants/separation = 64
 alignment = 1
 
-[node name="Label" type="Label" parent="TabContainer/Player/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Player/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 42
+script = ExtResource("3_ucg55")
+
+[node name="PlayerName" type="Label" parent="TabContainer/Player/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_0fvr5")
+theme_override_font_sizes/font_size = 30
 text = "Player Name"
+
+[node name="VSeparator" type="VSeparator" parent="TabContainer/Player/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/Player/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+placeholder_text = "Player"
+
+[node name="SaveButton" type="Button" parent="TabContainer/Player/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
