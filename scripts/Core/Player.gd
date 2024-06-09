@@ -11,13 +11,16 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") #9.8 lma
 
 @onready var CameraHolder: Node3D = $CameraHolder
 @onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var timer : Label = $CameraHolder/TimerContainer/Label
+@onready var timerLogic : TimerLogic = $TimerLogic
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 func _input(event):
 	if event.is_action_pressed("Quit"): 
-		get_tree().quit()
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		get_tree().change_scene_to_file("res://scenes/Menus/MainMenu.tscn")
 		
 	if event is InputEventMouseMotion:
 		var horzRot = event.relative.x * -SENSITIVITY
@@ -29,6 +32,12 @@ func _input(event):
 		#Rotate just the view so they can look up/down
 		CameraHolder.rotate_x(deg_to_rad(vertRot))
 		CameraHolder.rotation_degrees.x = clamp(CameraHolder.rotation_degrees.x, -90, 90)
+		
+	if event.is_action_pressed("Reset"):
+		timerLogic.reset()
+
+func _process(_delta):
+	timer.text = timerLogic.get_time()
 
 func _physics_process(delta):
 	if not is_on_floor():

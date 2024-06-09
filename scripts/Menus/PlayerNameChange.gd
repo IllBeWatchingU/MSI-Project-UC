@@ -5,9 +5,16 @@ extends HBoxContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	save_button.button_down.connect(_on_save_button_pressed)
+	line_edit.text_changed.connect(_on_line_edit_changed)
+	save_button.disabled = true
 
+func _on_line_edit_changed(_text):
+	if save_button.disabled:
+		save_button.disabled = false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _on_save_button_pressed():
+	var data = SaveManager.read_save()
+	data.current_player_name = line_edit.text
+	SaveManager.write_save(data)
+	save_button.disabled = true
