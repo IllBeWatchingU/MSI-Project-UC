@@ -1,11 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://cx7c52bhqab56"]
+[gd_scene load_steps=13 format=3 uid="uid://cx7c52bhqab56"]
 
 [ext_resource type="Script" path="res://scripts/MultiplexerLogic/MultiplexerLogic.gd" id="1_w6ljy"]
 [ext_resource type="PackedScene" uid="uid://cpvwhorts66eb" path="res://scenes/Multiplexer/MultiplexLabel.tscn" id="2_2sgai"]
+[ext_resource type="Texture2D" uid="uid://cnoejpfe50cl1" path="res://assets/textures/concrete_layers_02_diff_4k.png" id="2_lvaff"]
 [ext_resource type="PackedScene" uid="uid://dbxe2sjotghhe" path="res://scenes/Multiplexer/MultiplexButton.tscn" id="3_5apge"]
+[ext_resource type="Texture2D" uid="uid://cms5hw1v0acwj" path="res://assets/textures/concrete_layers_02_nor_gl_4k.png" id="3_5vqls"]
+[ext_resource type="Texture2D" uid="uid://6kagom3gvd0i" path="res://assets/textures/concrete_layers_02_rough_4k.png" id="4_agu7h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8p4n"]
+albedo_texture = ExtResource("2_lvaff")
 metallic = 0.29
+roughness_texture = ExtResource("4_agu7h")
+normal_enabled = true
+normal_texture = ExtResource("3_5vqls")
+uv1_scale = Vector3(4, 4, 4)
 
 [sub_resource type="BoxMesh" id="BoxMesh_6jh5g"]
 material = SubResource("StandardMaterial3D_l8p4n")
@@ -13,6 +21,19 @@ size = Vector3(1.25, 2, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n1b1l"]
 size = Vector3(1.5, 2.75, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bumkd"]
+albedo_color = Color(0.858824, 0.176471, 0.231373, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_j1tap"]
+material = SubResource("StandardMaterial3D_bumkd")
+top_radius = 0.01
+bottom_radius = 0.01
+height = 0.3
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mrwsp"]
+height = 0.3
+radius = 0.01
 
 [node name="Node3D" type="Node3D"]
 
@@ -118,7 +139,7 @@ text = "A0"
 font_size = 20
 
 [node name="Result" type="Label3D" parent="Multiplexer/MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.127)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.17252, 0, 0.127)
 text = "0"
 
 [node name="Label3D" type="Label3D" parent="Multiplexer/MeshInstance3D/Result"]
@@ -129,70 +150,204 @@ font_size = 20
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Multiplexer"]
 shape = SubResource("BoxShape3D_n1b1l")
 
+[node name="Cables" type="Node3D" parent="."]
+
+[node name="Cable" type="StaticBody3D" parent="Cables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.774505, 0.881212, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cables/Cable"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_j1tap")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cables/Cable"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_mrwsp")
+
+[node name="Cable9" type="StaticBody3D" parent="Cables"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.222014, -1.11992, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cables/Cable9"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_j1tap")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cables/Cable9"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_mrwsp")
+
+[node name="Cable10" type="StaticBody3D" parent="Cables"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.38659, -1.11992, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cables/Cable10"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_j1tap")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cables/Cable10"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_mrwsp")
+
+[node name="Cable11" type="StaticBody3D" parent="Cables"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.553412, -1.11992, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cables/Cable11"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_j1tap")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cables/Cable11"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_mrwsp")
+
+[node name="ResultCable" type="StaticBody3D" parent="Cables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.776175, -0.00840658, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cables/ResultCable"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_j1tap")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cables/ResultCable"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_mrwsp")
+
+[node name="Cable8" type="StaticBody3D" parent="Cables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.774505, -0.455839, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cables/Cable8"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_j1tap")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cables/Cable8"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_mrwsp")
+
+[node name="Cable7" type="StaticBody3D" parent="Cables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.774505, -0.252922, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cables/Cable7"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_j1tap")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cables/Cable7"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_mrwsp")
+
+[node name="Cable6" type="StaticBody3D" parent="Cables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.774505, -0.0670819, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cables/Cable6"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_j1tap")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cables/Cable6"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_mrwsp")
+
+[node name="Cable5" type="StaticBody3D" parent="Cables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.774505, 0.119424, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cables/Cable5"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_j1tap")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cables/Cable5"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_mrwsp")
+
+[node name="Cable4" type="StaticBody3D" parent="Cables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.774505, 0.314267, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cables/Cable4"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_j1tap")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cables/Cable4"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_mrwsp")
+
+[node name="Cable3" type="StaticBody3D" parent="Cables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.774505, 0.506435, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cables/Cable3"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_j1tap")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cables/Cable3"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_mrwsp")
+
+[node name="Cable2" type="StaticBody3D" parent="Cables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.774505, 0.702081, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cables/Cable2"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_j1tap")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cables/Cable2"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_mrwsp")
+
 [node name="Buttons" type="Node3D" parent="."]
 
 [node name="Button I0" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, 0.877, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04826, 0.877, 0)
 value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I0")
 display_text = "I0 Button"
 action_text = "Change bit value"
 
 [node name="Button I1" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, 0.699, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04826, 0.699, 0)
 value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I1")
 display_text = "I1 Button"
 action_text = "Change bit value"
 
 [node name="Button I2" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, 0.51, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04826, 0.51, 0)
 value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I2")
 display_text = "I2 Button"
 action_text = "Change bit value"
 
 [node name="Button I3" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, 0.32, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04826, 0.32, 0)
 value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I3")
 display_text = "I3 Button"
 action_text = "Change bit value"
 
 [node name="Button I4" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, 0.13, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04826, 0.13, 0)
 value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I4")
 display_text = "I4 Button"
 action_text = "Change bit value"
 
 [node name="Button I5" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, -0.06, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04826, -0.06, 0)
 value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I5")
 display_text = "I5 Button"
 action_text = "Change bit value"
 
 [node name="Button I6" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, -0.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04826, -0.25, 0)
 value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I6")
 display_text = "I6 Button"
 action_text = "Change bit value"
 
 [node name="Button I7" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78, -0.44, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04826, -0.44, 0)
 value = NodePath("../../Multiplexer/MeshInstance3D/Inputs/I7")
 display_text = "I7 Button"
 action_text = "Change bit value"
 
 [node name="Button A2" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.54, -1.17, 0)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.54, -1.37433, 0)
 value = NodePath("../../Multiplexer/MeshInstance3D/Selectors/A2")
 display_text = "A2 Button"
 action_text = "Change bit value"
 
 [node name="Button A1" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.38, -1.17, 0)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.38, -1.37433, 0)
 value = NodePath("../../Multiplexer/MeshInstance3D/Selectors/A1")
 display_text = "A1 Button"
 action_text = "Change bit value"
 
 [node name="Button A0" parent="Buttons" node_paths=PackedStringArray("value") instance=ExtResource("3_5apge")]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.22, -1.17, 0)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.22, -1.37433, 0)
 value = NodePath("../../Multiplexer/MeshInstance3D/Selectors/A0")
 display_text = "A0 Button"
 action_text = "Change bit value"

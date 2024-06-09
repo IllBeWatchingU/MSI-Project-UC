@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://scripts/Menus/MainMenu.gd" id="1_ivgqu"]
 [ext_resource type="PackedScene" uid="uid://bguyllosr2cyx" path="res://scenes/Core/UI_Sounds.tscn" id="2_uvpyf"]
 [ext_resource type="FontFile" uid="uid://c7r7x7h6jh0uq" path="res://assets/fonts/kenvector_future.ttf" id="4_ka0ee"]
-[ext_resource type="AudioStream" uid="uid://0flc7sbjldbm" path="res://assets/audio/music/Cyberpunk Moonlight Sonata.mp3" id="5_7m007"]
 [ext_resource type="PackedScene" uid="uid://bg65b4koeray1" path="res://scenes/Menus/SettingsMenu.tscn" id="5_bqhgf"]
 [ext_resource type="PackedScene" uid="uid://crrsm1tcdluy7" path="res://scenes/Menus/LevelSelectMenu.tscn" id="5_sfge2"]
 [ext_resource type="PackedScene" uid="uid://i0sfj7yfh75v" path="res://scenes/Karnaugh/Level1.tscn" id="6_k5q2l"]
 [ext_resource type="PackedScene" uid="uid://1rry81l46ffo" path="res://scenes/Multiplexer/MultiplexLevel.tscn" id="7_w8hfj"]
 [ext_resource type="PackedScene" uid="uid://coxdctl7cyt6x" path="res://scenes/Menus/LeaderboardMenu.tscn" id="8_5o26k"]
+[ext_resource type="AudioStream" uid="uid://bdyx6nwqvf1nn" path="res://assets/audio/music/ambientmain_0.ogg" id="9_it6ou"]
 
 [sub_resource type="Gradient" id="Gradient_wkbg1"]
 colors = PackedColorArray(0.489218, 0.577116, 0.814937, 1, 0.863987, 0.865142, 0.950427, 1)
@@ -190,7 +190,7 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_7m007")
+stream = ExtResource("9_it6ou")
 volume_db = -11.243
 autoplay = true
 bus = &"Music"
