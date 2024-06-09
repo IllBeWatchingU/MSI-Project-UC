@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://l2q8vmjedkst"]
+[gd_scene load_steps=12 format=3 uid="uid://l2q8vmjedkst"]
 
 [ext_resource type="Script" path="res://scripts/Core/Player.gd" id="1_lf7qb"]
 [ext_resource type="PackedScene" uid="uid://b4uc4vyooy4b5" path="res://scenes/Core/TimerLogic.tscn" id="2_3doyu"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://bh7dwfqomgxjx" path="res://assets/fonts/Nexa-Heavy.ttf" id="4_c4tlg"]
 [ext_resource type="FontFile" uid="uid://c7r7x7h6jh0uq" path="res://assets/fonts/kenvector_future.ttf" id="5_ijkb3"]
 [ext_resource type="AudioStream" uid="uid://bkjfh4a6rqoqe" path="res://assets/audio/Jump.ogg" id="5_jri16"]
+[ext_resource type="PackedScene" uid="uid://ddrkuks32yy0t" path="res://scenes/Menus/GameCompleteMenu.tscn" id="7_lljgc"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_gp2yb"]
 height = 1.75
@@ -95,6 +96,9 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_ijkb3")
 theme_override_font_sizes/font_size = 30
 text = "00:00:00"
+
+[node name="GameCompleteMenu" parent="CameraHolder" instance=ExtResource("7_lljgc")]
+visible = false
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_jri16")

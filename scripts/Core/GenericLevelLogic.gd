@@ -1,12 +1,8 @@
 class_name GenericLevelLogic
-extends Node
+extends Node3D
 
+@onready var player : Player = $Player
+@export var levelName : String
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func game_complete():
+	player.game_completed(levelName)

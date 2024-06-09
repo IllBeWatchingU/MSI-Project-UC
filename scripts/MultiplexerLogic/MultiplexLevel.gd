@@ -1,19 +1,15 @@
-extends Node3D
-
-var game_complete : bool = false
-
-var multiplexers = []
+extends GenericLevelLogic
 
 var correct_result = {
-	"number_of_multiplexers" : 1,
-	"m1_i0" : -1,
+	"number_of_multiplexers" : 2,
+	"m1_i0" : 0,
 	"m1_i1" : 0,
 	"m1_i2" : 0,
-	"m1_i3": 0,
+	"m1_i3": 1,
 	"m1_i4" : 0,
-	"m1_i5" : 0,
-	"m1_i6": 0,
-	"m1_i7" : 0,
+	"m1_i5" : 1,
+	"m1_i6": 1,
+	"m1_i7" : 1,
 	"m1_a0" : 0,
 	"m1_a1" : 0,
 	"m1_a2" : 0,
@@ -49,7 +45,7 @@ var correct_result = {
 func check_result():
 	var number_of_mpx = int(no_mpx_label.text)
 	if number_of_mpx == correct_result.number_of_multiplexers:
-		multiplexers = get_multiplexers(number_of_mpx)
+		var multiplexers = get_multiplexers(number_of_mpx)
 		for i in number_of_mpx:
 			for j in 7:
 				var dict_name = "m" + str(i+1) + "_i" + str(j)
@@ -57,23 +53,27 @@ func check_result():
 					result_label.text = "Wrong!"
 					return
 				
-			for j in 2:
-				var dict_name = "m" + str(i+1) + "_a" + str(j)
-				if multiplexers[i].get_selector(j) != correct_result[dict_name]:
-					result_label.text = "Wrong!"
-					return
+			#for j in 2:
+			#	var dict_name = "m" + str(i+1) + "_a" + str(j)
+			#	if multiplexers[i].get_selector(j) != correct_result[dict_name]:
+			#		result_label.text = "Wrong!"
+			#		return
 		result_label.text = "Good!"
+		game_complete()
 	else: 
 		result_label.text = "Wrong!"
 		
 func get_multiplexers(num : int):
-	multiplexers = []
+	var multiplexers = []
 	if num == 1:
 		multiplexers.append($NumberMultiplexers/SingleMpx/Mpx1/Multiplexer)
 	elif num == 2:
 		multiplexers.append($NumberMultiplexers/TwoMpx/Mpx1/Multiplexer)
 		multiplexers.append($NumberMultiplexers/TwoMpx/Mpx2/Multiplexer)
-		
+	elif num == 3:
+		multiplexers.append($NumberMultiplexers/ThreeMpx/Mpx1/Multiplexer)
+		multiplexers.append($NumberMultiplexers/ThreeMpx/Mpx2/Multiplexer)
+		multiplexers.append($NumberMultiplexers/ThreeMpx/Mpx3/Multiplexer)
 	return multiplexers
 
 func _on_result_button_pressed(_interactor):
@@ -82,9 +82,3 @@ func _on_result_button_pressed(_interactor):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	result_button.interacted.connect(_on_result_button_pressed)
-	
-	#print(multiplexers)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

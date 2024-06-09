@@ -4,7 +4,7 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
-const SENSITIVITY = 0.4 # TODO: Export this
+const SENSITIVITY = 0.4 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") #9.8 lmao
@@ -13,31 +13,46 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") #9.8 lma
 @onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var timer : Label = $CameraHolder/TimerContainer/Label
 @onready var timerLogic : TimerLogic = $TimerLogic
+@onready var gameCompleteMenu : GameCompleteMenu = $CameraHolder/GameCompleteMenu
+
+var is_game_complete : bool = false 
+
+func game_completed(levelName : String):
+	var score : String = timerLogic.get_time()
+	is_game_complete = true
+	gameCompleteMenu.set_score(score)
+	SaveManager.save_current_score(levelName, score)
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	gameCompleteMenu.set_process(true)
+	gameCompleteMenu.visible = true
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	gameCompleteMenu.reset_level.connect(timerLogic.reset)
 	
 func _input(event):
-	if event.is_action_pressed("Quit"): 
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		get_tree().change_scene_to_file("res://scenes/Menus/MainMenu.tscn")
-		
-	if event is InputEventMouseMotion:
-		var horzRot = event.relative.x * -SENSITIVITY
-		#Clamp to not invert camera
-		var vertRot = event.relative.y * -SENSITIVITY
-		
-		#Rotate entire player so they move in facing direction
-		rotate_y(deg_to_rad(horzRot))
-		#Rotate just the view so they can look up/down
-		CameraHolder.rotate_x(deg_to_rad(vertRot))
-		CameraHolder.rotation_degrees.x = clamp(CameraHolder.rotation_degrees.x, -90, 90)
-		
-	if event.is_action_pressed("Reset"):
-		timerLogic.reset()
+	if !is_game_complete:
+		if event.is_action_pressed("Quit"): 
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+			get_tree().change_scene_to_file("res://scenes/Menus/MainMenu.tscn")
+			
+		if event is InputEventMouseMotion:
+			var horzRot = event.relative.x * -SENSITIVITY
+			#Clamp to not invert camera
+			var vertRot = event.relative.y * -SENSITIVITY
+			
+			#Rotate entire player so they move in facing direction
+			rotate_y(deg_to_rad(horzRot))
+			#Rotate just the view so they can look up/down
+			CameraHolder.rotate_x(deg_to_rad(vertRot))
+			CameraHolder.rotation_degrees.x = clamp(CameraHolder.rotation_degrees.x, -90, 90)
+			
+		if event.is_action_pressed("Reset"):
+			timerLogic.reset()
 
 func _process(_delta):
-	timer.text = timerLogic.get_time()
+	if(!is_game_complete):
+		timer.text = timerLogic.get_time()
 
 func _physics_process(delta):
 	if not is_on_floor():

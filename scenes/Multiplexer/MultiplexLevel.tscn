@@ -86,6 +86,7 @@ radius = 0.2
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_472rr")
+levelName = "level_3"
 
 [node name="Room" type="Node3D" parent="."]
 
@@ -163,10 +164,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.689, 0.518, -1.501)
 shape = SubResource("BoxShape3D_msobp")
 
 [node name="Label3D" type="Label3D" parent="Deco/Computer"]
-transform = Transform3D(-4.37114e-08, -0.21644, 0.976296, 0, 0.976296, 0.21644, -1, 9.46088e-09, -4.26753e-08, -2.73114, 1.41438, -1.501)
-text = "Minimize function:
-XXX"
-font_size = 25
+transform = Transform3D(-4.37114e-08, -0.21644, 0.976296, 0, 0.976296, 0.21644, -1, 9.46088e-09, -4.26753e-08, -2.73114, 1.45038, -1.501)
+text = "Implement functions:
+1: (~A)BC + A(~B)C + AB(~C) + ABC
+2: "
+font_size = 17
+width = 300.0
 
 [node name="Display" type="StaticBody3D" parent="Deco"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.175286, 0)
