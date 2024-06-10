@@ -10,6 +10,9 @@ var last_collided: Object = null
 func _physics_process(_delta):
 	var body: Node3D = get_collider()
 	
+	if not is_instance_valid(last_collided):
+		last_collided = null
+	
 	if last_collided != body:
 		if last_collided is Interactable: 
 			last_collided.unfocused.emit(self)
