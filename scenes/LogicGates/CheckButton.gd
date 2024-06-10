@@ -10,11 +10,11 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 
-func _on_interacted(interactor):
+func _on_interacted(_interactor):
 	var board = get_parent().get_parent().find_child("Board")
 	var input_a = board.find_child("BoardInputA").find_child("Outlet")
 	var input_b = board.find_child("BoardInputB").find_child("Outlet")

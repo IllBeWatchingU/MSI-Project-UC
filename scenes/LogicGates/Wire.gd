@@ -11,11 +11,11 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	self.signal_value = self.output.signal_value
 
 
-func _on_interacted(interactor):
+func _on_interacted(_interactor):
 	self.input.connected = null
 	self.input.wire = null
 	var board = get_parent()
