@@ -13,4 +13,7 @@ var selection_count: int = 0:
 
 		
 func _ready():
-	$VBoxContainer/ConfirmKeyLabel.text = "Press '%s' to confirm selection" % confirm_key 
+	$VBoxContainer/ConfirmKeyLabel.text = "Press '%s' to confirm selection" % confirm_key
+	
+func _process(_delta):
+	$VBoxContainer/FpsLabel.text = "Frames: %d" % Engine.get_frames_per_second()

@@ -349,6 +349,14 @@ static func gray2bin(v: int) -> int:
 
 #endregion
 
+func spawn_answer() -> void:
+	for island_id in range(min_islands.size()):
+		for i in range(4):
+			var island = min_islands[island_id]
+			var cell = get_cell_by_xy(island.corners[i])
+			var marker = IslandMarker.spawn(i, -island_id-1)
+			cell.add_child(marker)
+			instanciated_island_markers.append(marker)
 
 func _on_output_machine_confirmed(result):
 	output_machine.enabled = false
@@ -358,3 +366,4 @@ func _on_output_machine_confirmed(result):
 		level_won.emit()
 	else:
 		output_machine.set_text("Wrong answer!\nCorrect answer is:\n" + min_function)
+		spawn_answer()

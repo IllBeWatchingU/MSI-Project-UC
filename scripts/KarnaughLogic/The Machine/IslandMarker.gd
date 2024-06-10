@@ -15,9 +15,14 @@ var color: Color:
 var island_id: int:
 	set(value): # Set color and scale
 		island_id = value
-		color = Constants.GROUP_COLORS[value]
-		scale *= Vector3(1 - .05 * value, 1 - .05 * value, 1.0)
-		position.z += .001 * value
+		if value < 0:
+			color = Color(-0.1*value,-0.1*value,-0.1*value)
+			scale *= 1.3
+			position.z += .005 + .001 * value
+		else:
+			color = Constants.GROUP_COLORS[value]
+			scale *= Vector3(1 - .05 * value, 1 - .05 * value, 1.0)
+			position.z += .001 * value
 		
 		
 
