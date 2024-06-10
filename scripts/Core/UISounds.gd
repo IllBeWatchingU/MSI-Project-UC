@@ -35,5 +35,5 @@ func ui_sfx_play(sound: StringName):
 	sounds[sound].play()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass

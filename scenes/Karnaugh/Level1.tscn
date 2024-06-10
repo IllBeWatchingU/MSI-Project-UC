@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://i0sfj7yfh75v"]
+[gd_scene load_steps=14 format=3 uid="uid://i0sfj7yfh75v"]
 
 [ext_resource type="PackedScene" uid="uid://brvg3wg2f1yia" path="res://scenes/Karnaugh/Level1Player.tscn" id="1_cimhi"]
+[ext_resource type="Script" path="res://scripts/KarnaughLogic/Level1.gd" id="1_yyltq"]
 [ext_resource type="PackedScene" uid="uid://bvfnq7amluk42" path="res://scenes/Karnaugh/The Machine/KarnaughMachine.tscn" id="2_mfd17"]
 [ext_resource type="PackedScene" uid="uid://rvvct3bbcdte" path="res://scenes/Karnaugh/Input/ResetButton.tscn" id="3_s4yvo"]
 [ext_resource type="PackedScene" uid="uid://bbibk23o6bw0j" path="res://scenes/Karnaugh/Input/Display.tscn" id="4_rjb3e"]
@@ -28,6 +29,8 @@ background_mode = 2
 sky = SubResource("Sky_oke4f")
 
 [node name="Level1" type="Node3D"]
+script = ExtResource("1_yyltq")
+levelName = "level_1"
 
 [node name="Floor" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
@@ -73,4 +76,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01694, 1.29751, -4.5)
 [node name="OutputMachine" parent="." instance=ExtResource("5_gjda7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.495, 1.26606, -4.5)
 
+[connection signal="level_won" from="KarnaughMachine" to="." method="_on_karnaugh_machine_level_won"]
 [connection signal="confirmed" from="OutputMachine" to="KarnaughMachine" method="_on_output_machine_confirmed"]

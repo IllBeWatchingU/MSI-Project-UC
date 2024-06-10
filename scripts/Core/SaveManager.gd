@@ -1,17 +1,16 @@
 extends Node
 
-var json = JSON.new()
 var path = "user://savedata.json"
 
 func write_save(content):
 	var file = FileAccess.open(path, FileAccess.WRITE)
-	file.store_string(json.stringify(content))
+	file.store_string(JSON.stringify(content))
 	file.close()
 	file = null
 
 func read_save():
 	var file = FileAccess.open(path, FileAccess.READ)
-	var content = json.parse_string(file.get_as_text())
+	var content = JSON.parse_string(file.get_as_text())
 	return content
 	
 func save_current_score(levelName : String, score : String):

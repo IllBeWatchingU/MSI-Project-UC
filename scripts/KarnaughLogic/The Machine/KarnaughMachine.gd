@@ -1,6 +1,8 @@
 extends StaticBody3D
 class_name KarnaughMachine
 
+signal level_won()
+
 const State = Constants.State
 
 @export var generate_dont_cares: bool = false
@@ -352,5 +354,6 @@ func _on_output_machine_confirmed(result):
 	print(min_function)
 	if check_answer(result):
 		output_machine.set_text("You did it!")
+		level_won.emit()
 	else:
 		output_machine.set_text("Wrong answer!\nCorrect answer is:\n" + min_function)
