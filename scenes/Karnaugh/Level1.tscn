@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://i0sfj7yfh75v"]
+[gd_scene load_steps=13 format=3 uid="uid://i0sfj7yfh75v"]
 
 [ext_resource type="PackedScene" uid="uid://brvg3wg2f1yia" path="res://scenes/Karnaugh/Level1Player.tscn" id="1_cimhi"]
-[ext_resource type="PackedScene" uid="uid://bvfnq7amluk42" path="res://scenes/Karnaugh/KarnaughMachine.tscn" id="2_mfd17"]
-[ext_resource type="PackedScene" uid="uid://rvvct3bbcdte" path="res://scenes/Karnaugh/ResetButton.tscn" id="3_s4yvo"]
-[ext_resource type="PackedScene" uid="uid://bbibk23o6bw0j" path="res://scenes/Karnaugh/Display.tscn" id="4_rjb3e"]
+[ext_resource type="PackedScene" uid="uid://bvfnq7amluk42" path="res://scenes/Karnaugh/The Machine/KarnaughMachine.tscn" id="2_mfd17"]
+[ext_resource type="PackedScene" uid="uid://rvvct3bbcdte" path="res://scenes/Karnaugh/Input/ResetButton.tscn" id="3_s4yvo"]
+[ext_resource type="PackedScene" uid="uid://bbibk23o6bw0j" path="res://scenes/Karnaugh/Input/Display.tscn" id="4_rjb3e"]
+[ext_resource type="PackedScene" uid="uid://62reu6ssx6ts" path="res://scenes/Karnaugh/Output/OutputMachine.tscn" id="5_gjda7"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_sfclp"]
 size = Vector3(10, 0.5, 10)
@@ -56,14 +57,20 @@ transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 10, 10)
 [node name="Player" parent="." node_paths=PackedStringArray("karnaugh_machine") instance=ExtResource("1_cimhi")]
 karnaugh_machine = NodePath("../KarnaughMachine")
 
-[node name="KarnaughMachine" parent="." node_paths=PackedStringArray("reset_button", "input_display") instance=ExtResource("2_mfd17")]
+[node name="KarnaughMachine" parent="." node_paths=PackedStringArray("reset_button", "input_display", "output_machine") instance=ExtResource("2_mfd17")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.1)
 reset_button = NodePath("../ResetButton")
 input_display = NodePath("../InputDisplay")
+output_machine = NodePath("../OutputMachine")
 
 [node name="ResetButton" parent="." instance=ExtResource("3_s4yvo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02956, 0, -3.77627)
 
 [node name="InputDisplay" parent="." instance=ExtResource("4_rjb3e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01694, 1.29751, -4.5)
+
+[node name="OutputMachine" parent="." instance=ExtResource("5_gjda7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.495, 1.26606, -4.5)
+
+[connection signal="confirmed" from="OutputMachine" to="KarnaughMachine" method="_on_output_machine_confirmed"]

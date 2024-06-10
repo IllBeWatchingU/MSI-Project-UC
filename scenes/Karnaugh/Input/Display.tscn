@@ -1,7 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bbibk23o6bw0j"]
 
-[ext_resource type="Script" path="res://scripts/KarnaughLogic/Display.gd" id="1_5pbih"]
+[ext_resource type="Script" path="res://scripts/KarnaughLogic/Input/Display.gd" id="1_5pbih"]
 [ext_resource type="FontFile" uid="uid://bh7dwfqomgxjx" path="res://assets/fonts/Nexa-Heavy.ttf" id="1_52d1k"]
+[ext_resource type="Script" path="res://scripts/KarnaughLogic/Input/Display.gd" id="1_ulpxo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nsrwp"]
 albedo_color = Color(0.188235, 0.188235, 0.188235, 1)
@@ -15,7 +16,7 @@ size = Vector3(1.2, 0.6, 0.1)
 
 [node name="Display" type="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
-script = ExtResource("1_5pbih")
+script = ExtResource("1_ulpxo")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_5p430")
@@ -26,7 +27,7 @@ shape = SubResource("BoxShape3D_s2ysh")
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.051)
 pixel_size = 0.003
-text = "f(a,b,c,d) = s(01,2,3,4,5,6,7,8,9,10,11,12,13,14)"
+text = "Placeholder Text"
 font = ExtResource("1_52d1k")
 autowrap_mode = 2
 width = 380.0

@@ -8,12 +8,14 @@ const State = Constants.State
 @export_group("Nodes")
 @export var reset_button: Node3D
 @export var input_display: Display
-@export var output_display: Display
+@export var output_machine: OutputMachine
 
 var cell_values: Array[State]
 var player_islands: Array[Island]
 var min_islands: Array[Island]
 var min_function: String
+
+var instanciated_island_markers: Array[IslandMarker] 
 
 var cell_selection: Array[int]:
 	get: #Call each cell and check selected
@@ -30,6 +32,9 @@ class Island:
 		C = 0x08, CN = 0x04,
 		D = 0x02, DN = 0x01,
 	}
+	
+	const ROWS = [letr.AN | letr.BN, letr.AN | letr.B, letr.A | letr.B, letr.A | letr.BN]
+	const COLS = [letr.CN | letr.DN, letr.CN | letr.D, letr.C | letr.D, letr.C | letr.DN]
 	
 	var start: Vector2i
 	var shape: Vector2i
@@ -49,14 +54,12 @@ class Island:
 		get:
 			#  _ _ _ _
 			# AABBCCDD bitmap format.
-			const rows = [letr.AN | letr.BN, letr.AN | letr.B, letr.A | letr.B, letr.A | letr.BN]
-			const cols = [letr.CN | letr.DN, letr.CN | letr.D, letr.C | letr.D, letr.C | letr.DN]
 			var func_bmap := 0
 			
 			# Turn on every flag required by function
 			for i in range(shape.x):
 				for j in range(shape.y):
-					func_bmap |= cols[(start.x + i) % 4] | rows[(start.y + j) % 4]
+					func_bmap |= COLS[(start.x + i) % 4] | ROWS[(start.y + j) % 4]
 			
 			# Remove cancelled out flags (eg. A and AN)
 			for i in range(4):
@@ -70,7 +73,50 @@ class Island:
 					result += "%s" % letr.find_key(flag)
 			
 			return result.replace("N", String.chr(0x0304))
-			
+	var corners: Array[Vector2i]:
+		get:
+			var result: Array[Vector2i] = []
+			result.append(start)
+			result.append((start + (shape - Vector2i.ONE) * Vector2i.RIGHT) % 4)
+			result.append(end)
+			result.append((start + (shape - Vector2i.ONE) * Vector2i.DOWN) % 4)
+			return result
+	
+	static func fromFunction(f: String) -> Island:
+		var letters := []
+		for c in f:
+			if c != String.chr(0x0304):
+				letters.append(c)
+			else:
+				letters[-1] = letters[-1] + "N"
+		
+		var bits = letters.map(func(x): return letr.get(x))
+		var mask = bits.reduce(func(acc, val): return acc | val, 0)
+		var list: Array[int] = []
+		
+		for i in range(16):
+			if (COLS[i % 4] | ROWS[i / floor(4)]) & mask == mask:
+				list.append(i)
+		
+		return Island.fromList(list)
+		
+	static func fromList(list: Array[int]) -> Island:
+		var result = null
+		if Constants.ISLAND_SIZES.has(list.size()):
+			for cell_id in list:
+				var st = Cell.id2xy(cell_id)
+				for sh in Constants.ISLAND_CONFIGURATIONS[list.size()]:
+					var temp = Island.tryFromStartList(st, sh, list)
+					result = temp if temp else result
+		
+		return result
+	
+	static func tryFromStartList(st: Vector2i, sh: Vector2i, list: Array[int]) -> Island:
+		for x in sh.x:
+			for y in sh.y:
+				var v := (st + Vector2i(x,y)) % 4
+				if not list.has(Cell.xy2id(v)): return null
+		return Island.new(st, sh).normalized()
 	
 	func _init(p_start: Vector2i, p_shape: Vector2i):
 		self.start = p_start
@@ -92,6 +138,13 @@ class Island:
 			island_map |= island.bitmap
 		return island_map | bitmap != island_map
 	
+	func normalized() -> Island:
+		var new_start := start
+		for i in range(2):
+			if shape[i] == 4:
+				new_start[i] = 0
+		return Island.new(new_start, shape)
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
@@ -101,6 +154,14 @@ func _ready():
 	randomize_input()
 
 func randomize_input():
+	for marker in instanciated_island_markers:
+		marker.queue_free()
+	player_islands = []
+	min_islands = []
+	min_function = ""
+	instanciated_island_markers = []
+	deselect_all()
+	
 	cell_values = []
 	var table = [State.OFF, State.ON]
 	if generate_dont_cares: table.append(State.IGNORE)
@@ -109,8 +170,9 @@ func randomize_input():
 		get_node("Cells/Cell%s" % i).state = cell_values[i]
 	
 	input_display.set_input_string(cell_values)
+	output_machine.reset()
 	
-	solve() #TODO: save result somewhere
+	solve()
 	
 func add_new_island() -> void:
 	# Verify we selected the right number of cells
@@ -126,6 +188,11 @@ func add_new_island() -> void:
 		
 		if island:
 			player_islands.append(island)
+			for i in range(4):
+				var cell = get_cell_by_xy(island.corners[i])
+				var marker = IslandMarker.spawn(i, player_islands.size() - 1)
+				cell.add_child(marker)
+				instanciated_island_markers.append(marker)
 		
 	deselect_all()
 
@@ -140,7 +207,7 @@ func get_valid_shape(start: Vector2i, shape: Vector2i, check_selected: bool = fa
 			for y in shape.y:
 				var v := (start + Vector2i(x,y)) % 4
 				if not check.call(get_cell_by_xy(v)): return null
-		return Island.new(start, shape)
+		return Island.new(start, shape).normalized()
 				
 func deselect_all() -> void:
 	for id in cell_selection:
@@ -238,6 +305,19 @@ func clip_to_dim(d: int) -> int:
 		if d >= d2: r = d2
 		else: break
 	return r
+	
+func check_answer(answer: String) -> bool:
+	var functions := Array(answer.split(" + "))
+	var islands := functions.map(func(x): return Island.fromFunction(x))
+	
+	if (islands.size() != min_islands.size()): return false
+	
+	var f = func(acc: int, val: Island): return acc | val.bitmap
+		
+	var map = islands.reduce(f, 0)
+	var map_min = min_islands.reduce(f, 0)
+	
+	return map == map_min
 
 #endregion Solver
 
@@ -265,3 +345,12 @@ static func gray2bin(v: int) -> int:
 
 
 #endregion
+
+
+func _on_output_machine_confirmed(result):
+	output_machine.enabled = false
+	print(min_function)
+	if check_answer(result):
+		output_machine.set_text("You did it!")
+	else:
+		output_machine.set_text("Wrong answer!\nCorrect answer is:\n" + min_function)

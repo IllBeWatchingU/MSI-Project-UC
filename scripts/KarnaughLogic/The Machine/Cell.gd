@@ -80,5 +80,6 @@ func toggle_state():
 	state = ((state + 1) % State.size()) as State
 
 func _on_interacted(interactor: InteractRaycast):
-	selected = not selected
-	interactor.cell_updated.emit()
+	if karnaugh_machine.player_islands.size() < 8:
+		selected = not selected
+		interactor.cell_updated.emit()
