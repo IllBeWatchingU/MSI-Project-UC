@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8ub5prxpvumm"]
+[gd_scene load_steps=10 format=3 uid="uid://c8ub5prxpvumm"]
 
 [ext_resource type="PackedScene" uid="uid://l2q8vmjedkst" path="res://scenes/Core/Player.tscn" id="1_6g15r"]
+[ext_resource type="PackedScene" uid="uid://lbbq2av2o8bj" path="res://scenes/LogicGates/BoardInput.tscn" id="3_ac2p1"]
 [ext_resource type="PackedScene" uid="uid://cis8glfj47vl6" path="res://scenes/LogicGates/Board.tscn" id="3_xl3t5"]
+[ext_resource type="PackedScene" uid="uid://dgkxfywcxbkjq" path="res://scenes/LogicGates/BoardOutput.tscn" id="4_1hq3w"]
+[ext_resource type="PackedScene" uid="uid://c3sm4fytn8mcq" path="res://scenes/LogicGates/CheckButton.tscn" id="5_y1q1y"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_dgya7"]
 size = Vector3(10, 0.5, 10)
@@ -16,6 +19,12 @@ size = Vector3(10, 3, 0.5)
 points = PackedVector3Array(5, 1.5, 0.25, 5, 1.5, -0.25, -5, 1.5, 0.25, 5, -1.5, 0.25, 5, -1.5, -0.25, -5, 1.5, -0.25, -5, -1.5, 0.25, -5, -1.5, -0.25)
 
 [node name="World" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_6g15r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 10, 10)
 
 [node name="Floor" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
@@ -36,11 +45,62 @@ mesh = SubResource("BoxMesh_pccyi")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.75)
 shape = SubResource("ConvexPolygonShape3D_sa873")
 
-[node name="Player" parent="." instance=ExtResource("1_6g15r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+[node name="Wall2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.51525)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 10, 10)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.75)
+mesh = SubResource("BoxMesh_pccyi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.75)
+shape = SubResource("ConvexPolygonShape3D_sa873")
+
+[node name="Wall3" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10, 0, 0.045)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.75)
+mesh = SubResource("BoxMesh_pccyi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.75)
+shape = SubResource("ConvexPolygonShape3D_sa873")
+
+[node name="Wall4" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0.045)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -5)
+mesh = SubResource("BoxMesh_pccyi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.75)
+shape = SubResource("ConvexPolygonShape3D_sa873")
 
 [node name="Board" parent="." instance=ExtResource("3_xl3t5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.415, -4.5)
+
+[node name="BoardInputA" parent="Board" instance=ExtResource("3_ac2p1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.585, 0.0999999)
+
+[node name="Label3D" type="Label3D" parent="Board/BoardInputA"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.08)
+text = "A"
+
+[node name="BoardInputB" parent="Board" instance=ExtResource("3_ac2p1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.415, 0.0999999)
+
+[node name="Label3D" type="Label3D" parent="Board/BoardInputB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0799999)
+text = "B"
+
+[node name="BoardOutput" parent="Board" instance=ExtResource("4_1hq3w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.085, 0.0999999)
+
+[node name="Label3D" type="Label3D" parent="Board/BoardOutput"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.08)
+text = "Q"
+
+[node name="CheckButton" parent="." instance=ExtResource("5_y1q1y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -4.4)

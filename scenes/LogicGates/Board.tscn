@@ -14,6 +14,7 @@ size = Vector3(8.98698, 2.80493, 0.0812836)
 [node name="Board" type="StaticBody3D"]
 collision_layer = 3
 script = ExtResource("1_mjgh4")
+display_text = "Add Gate"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_4kxtc")
@@ -23,6 +24,4 @@ surface_material_override/0 = SubResource("StandardMaterial3D_pfhxq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000480652, -0.0045166, -0.00681305)
 shape = SubResource("BoxShape3D_wg52i")
 
-[connection signal="focused" from="." to="." method="_on_focused"]
 [connection signal="interacted" from="." to="." method="_on_interacted"]
-[connection signal="unfocused" from="." to="." method="_on_unfocused"]
