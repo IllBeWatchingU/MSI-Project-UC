@@ -118,7 +118,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.54, -0.87, 0.127)
 
 [node name="Label3D" type="Label3D" parent="Multiplexer/MeshInstance3D/Selectors/A2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16, 0)
-text = "A2"
+text = "C"
 font_size = 20
 
 [node name="A1" parent="Multiplexer/MeshInstance3D/Selectors" instance=ExtResource("2_2sgai")]
@@ -126,8 +126,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38, -0.87, 0.127)
 
 [node name="Label3D" type="Label3D" parent="Multiplexer/MeshInstance3D/Selectors/A1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16, 0)
-text = "A1
-"
+text = "B"
 font_size = 20
 
 [node name="A0" parent="Multiplexer/MeshInstance3D/Selectors" instance=ExtResource("2_2sgai")]
@@ -135,7 +134,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22, -0.87, 0.127)
 
 [node name="Label3D" type="Label3D" parent="Multiplexer/MeshInstance3D/Selectors/A0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16, 0)
-text = "A0"
+text = "A"
 font_size = 20
 
 [node name="Result" type="Label3D" parent="Multiplexer/MeshInstance3D"]

@@ -1,7 +1,7 @@
 extends GenericLevelLogic
 
 var correct_result = {
-	"number_of_multiplexers" : 2,
+	"number_of_multiplexers" : 1,
 	"m1_i0" : 0,
 	"m1_i1" : 0,
 	"m1_i2" : 0,

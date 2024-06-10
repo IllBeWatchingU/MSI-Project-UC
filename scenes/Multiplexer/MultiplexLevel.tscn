@@ -166,8 +166,7 @@ shape = SubResource("BoxShape3D_msobp")
 [node name="Label3D" type="Label3D" parent="Deco/Computer"]
 transform = Transform3D(-4.37114e-08, -0.21644, 0.976296, 0, 0.976296, 0.21644, -1, 9.46088e-09, -4.26753e-08, -2.73114, 1.45038, -1.501)
 text = "Implement functions:
-1: (~A)BC + A(~B)C + AB(~C) + ABC
-2: "
+1: (~A)BC + A(~B)C + AB(~C) + ABC"
 font_size = 17
 width = 300.0
 
