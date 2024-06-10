@@ -1,19 +1,49 @@
-[gd_scene load_steps=14 format=3 uid="uid://i0sfj7yfh75v"]
+[gd_scene load_steps=31 format=3 uid="uid://i0sfj7yfh75v"]
 
 [ext_resource type="PackedScene" uid="uid://brvg3wg2f1yia" path="res://scenes/Karnaugh/Level1Player.tscn" id="1_cimhi"]
 [ext_resource type="Script" path="res://scripts/KarnaughLogic/Level1.gd" id="1_yyltq"]
 [ext_resource type="PackedScene" uid="uid://bvfnq7amluk42" path="res://scenes/Karnaugh/The Machine/KarnaughMachine.tscn" id="2_mfd17"]
+[ext_resource type="Texture2D" uid="uid://mcpasq1rq5iv" path="res://assets/textures/wood_floor_diff_4k.png" id="2_x63d4"]
+[ext_resource type="Texture2D" uid="uid://bvw2slwm26fcu" path="res://assets/textures/wood_floor_nor_gl_4k.png" id="3_754ve"]
 [ext_resource type="PackedScene" uid="uid://rvvct3bbcdte" path="res://scenes/Karnaugh/Input/ResetButton.tscn" id="3_s4yvo"]
+[ext_resource type="Texture2D" uid="uid://dc1bc2oaq7syk" path="res://assets/textures/wood_floor_rough_4k.png" id="4_jg2mm"]
 [ext_resource type="PackedScene" uid="uid://bbibk23o6bw0j" path="res://scenes/Karnaugh/Input/Display.tscn" id="4_rjb3e"]
 [ext_resource type="PackedScene" uid="uid://62reu6ssx6ts" path="res://scenes/Karnaugh/Output/OutputMachine.tscn" id="5_gjda7"]
+[ext_resource type="Texture2D" uid="uid://cnoejpfe50cl1" path="res://assets/textures/concrete_layers_02_diff_4k.png" id="5_v3o11"]
+[ext_resource type="Texture2D" uid="uid://cms5hw1v0acwj" path="res://assets/textures/concrete_layers_02_nor_gl_4k.png" id="6_sl1so"]
+[ext_resource type="Texture2D" uid="uid://6kagom3gvd0i" path="res://assets/textures/concrete_layers_02_rough_4k.png" id="7_gf17f"]
+[ext_resource type="Texture2D" uid="uid://bnnmw4pfbryrr" path="res://assets/textures/factory_wall_diff_4k.png" id="7_wv3md"]
+[ext_resource type="Texture2D" uid="uid://dggr73lrdjqdj" path="res://assets/textures/factory_wall_nor_gl_4k.png" id="8_koulj"]
+[ext_resource type="Texture2D" uid="uid://cltbh2y572x8u" path="res://assets/textures/factory_wall_rough_4k.png" id="9_pr6vv"]
+[ext_resource type="AudioStream" uid="uid://0flc7sbjldbm" path="res://assets/audio/music/Cyberpunk Moonlight Sonata.mp3" id="16_rxly5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rh1og"]
+albedo_texture = ExtResource("2_x63d4")
+roughness_texture = ExtResource("4_jg2mm")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_scale = 3.2
+normal_texture = ExtResource("3_754ve")
+uv1_scale = Vector3(15, 15, 15)
 
 [sub_resource type="BoxMesh" id="BoxMesh_sfclp"]
+material = SubResource("StandardMaterial3D_rh1og")
 size = Vector3(10, 0.5, 10)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ytgu4"]
 points = PackedVector3Array(-5, -0.25, -5, -5, 0.25, -5, 5, -0.25, -5, -5, -0.25, 5, -5, 0.25, 5, 5, 0.25, -5, 5, -0.25, 5, 5, 0.25, 5)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rl53h"]
+albedo_texture = ExtResource("5_v3o11")
+roughness_texture = ExtResource("7_gf17f")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_scale = 5.71
+normal_texture = ExtResource("6_sl1so")
+uv1_scale = Vector3(20, 5, 15)
+
 [sub_resource type="BoxMesh" id="BoxMesh_vqp60"]
+material = SubResource("StandardMaterial3D_rl53h")
 size = Vector3(10, 3, 0.5)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tuhjd"]
@@ -27,6 +57,27 @@ sky_material = SubResource("ProceduralSkyMaterial_hxeu8")
 [sub_resource type="Environment" id="Environment_eqgpk"]
 background_mode = 2
 sky = SubResource("Sky_oke4f")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_quvbw"]
+albedo_texture = ExtResource("7_wv3md")
+roughness_texture = ExtResource("9_pr6vv")
+normal_enabled = true
+normal_scale = 5.0
+normal_texture = ExtResource("8_koulj")
+uv1_scale = Vector3(80, 30, 30)
+
+[sub_resource type="BoxMesh" id="BoxMesh_l04n7"]
+material = SubResource("StandardMaterial3D_quvbw")
+size = Vector3(10, 1.5, 0.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cji55"]
+points = PackedVector3Array(5, 0.75, 0.25, 5, 0.75, -0.25, -5, 0.75, 0.25, 5, -0.75, 0.25, 5, -0.75, -0.25, -5, 0.75, -0.25, -5, -0.75, 0.25, -5, -0.75, -0.25)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mrqx1"]
+points = PackedVector3Array(5, 0.75, 0.25, 5, 0.75, -0.25, -5, 0.75, 0.25, 5, -0.75, 0.25, 5, -0.75, -0.25, -5, 0.75, -0.25, -5, -0.75, 0.25, -5, -0.75, -0.25)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qw26u"]
+points = PackedVector3Array(5, 0.75, 0.25, 5, 0.75, -0.25, -5, 0.75, 0.25, 5, -0.75, 0.25, 5, -0.75, -0.25, -5, 0.75, -0.25, -5, -0.75, 0.25, -5, -0.75, -0.25)
 
 [node name="Level1" type="Node3D"]
 script = ExtResource("1_yyltq")
@@ -69,12 +120,50 @@ output_machine = NodePath("../OutputMachine")
 
 [node name="ResetButton" parent="." instance=ExtResource("3_s4yvo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02956, 0, -3.77627)
+visible = false
 
 [node name="InputDisplay" parent="." instance=ExtResource("4_rjb3e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01694, 1.29751, -4.5)
 
 [node name="OutputMachine" parent="." instance=ExtResource("5_gjda7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.495, 1.26606, -4.5)
+
+[node name="Wall2" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -4.75)
+mesh = SubResource("BoxMesh_l04n7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -4.75)
+shape = SubResource("ConvexPolygonShape3D_cji55")
+
+[node name="Wall3" type="StaticBody3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -4.75)
+mesh = SubResource("BoxMesh_l04n7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -4.75)
+shape = SubResource("ConvexPolygonShape3D_mrqx1")
+
+[node name="Wall4" type="StaticBody3D" parent="."]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0226021, 0.75, -4.77867)
+mesh = SubResource("BoxMesh_l04n7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -4.75)
+shape = SubResource("ConvexPolygonShape3D_qw26u")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_rxly5")
+autoplay = true
 
 [connection signal="level_won" from="KarnaughMachine" to="." method="_on_karnaugh_machine_level_won"]
 [connection signal="confirmed" from="OutputMachine" to="KarnaughMachine" method="_on_output_machine_confirmed"]
