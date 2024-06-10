@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://cfc3g53gmvy1g" path="res://assets/crosshair.png" id="2_qxn3v"]
 [ext_resource type="Script" path="res://scripts/Core/InteractRaycast.gd" id="3_ejpgq"]
 [ext_resource type="FontFile" uid="uid://bh7dwfqomgxjx" path="res://assets/fonts/Nexa-Heavy.ttf" id="4_c4tlg"]
-[ext_resource type="FontFile" uid="uid://c7r7x7h6jh0uq" path="res://assets/fonts/kenvector_future.ttf" id="5_ijkb3"]
 [ext_resource type="AudioStream" uid="uid://bkjfh4a6rqoqe" path="res://assets/audio/Jump.ogg" id="5_jri16"]
+[ext_resource type="FontFile" uid="uid://b58rhssnirku" path="res://assets/fonts/novem___.ttf" id="6_ltbbb"]
 [ext_resource type="PackedScene" uid="uid://ddrkuks32yy0t" path="res://scenes/Menus/GameCompleteMenu.tscn" id="7_lljgc"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_gp2yb"]
@@ -93,7 +93,7 @@ theme_override_constants/margin_bottom = 24
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("5_ijkb3")
+theme_override_fonts/font = ExtResource("6_ltbbb")
 theme_override_font_sizes/font_size = 30
 text = "00:00:00"
 
