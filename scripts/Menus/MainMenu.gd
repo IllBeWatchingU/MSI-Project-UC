@@ -26,7 +26,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	var tween = node.create_tween()
 	var offset = center - get_global_mouse_position() * 0.1
 	tween.tween_property(node,"position",offset,1.0)

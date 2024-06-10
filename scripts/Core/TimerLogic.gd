@@ -9,9 +9,9 @@ func reset():
 
 func get_time():
 	var current_time = Time.get_ticks_msec() - game_start_time
-	var minutes = current_time / 1000 / 60
-	var seconds = current_time / 1000 % 60
-	var mseconds = current_time % 1000/10
+	var minutes = current_time / floor(1000) / floor(60)
+	var seconds = current_time / floor(1000) % 60
+	var mseconds = current_time % floor(100)
 	if minutes < 10:
 		minutes = "0" + str(minutes)
 	if seconds < 10:
