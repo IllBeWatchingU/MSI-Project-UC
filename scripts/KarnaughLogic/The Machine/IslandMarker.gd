@@ -21,7 +21,7 @@ var island_id: int:
 		
 		
 
-const scene: PackedScene = preload("res://scenes/Karnaugh/Parts/IslandMarker.tscn")
+const scene: PackedScene = preload("res://scenes/Karnaugh/The Machine/IslandMarker.tscn")
 
 static func spawn(p_corner: Corner, p_id: int) -> IslandMarker:
 	var node = scene.instantiate()
