@@ -164,6 +164,7 @@ func randomize_input():
 	instanciated_island_markers = []
 	deselect_all()
 	
+	
 	cell_values = []
 	var table = [State.OFF, State.ON]
 	if generate_dont_cares: table.append(State.IGNORE)
