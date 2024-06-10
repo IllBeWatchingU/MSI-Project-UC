@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://crrsm1tcdluy7"]
+[gd_scene load_steps=10 format=3 uid="uid://crrsm1tcdluy7"]
 
 [ext_resource type="FontFile" uid="uid://c7r7x7h6jh0uq" path="res://assets/fonts/kenvector_future.ttf" id="1_0dg7e"]
 [ext_resource type="Script" path="res://scripts/Menus/LevelSelectMenu.gd" id="1_hc3ww"]
+[ext_resource type="PackedScene" uid="uid://i0sfj7yfh75v" path="res://scenes/Karnaugh/Level1.tscn" id="2_smkmx"]
+[ext_resource type="PackedScene" uid="uid://c8ub5prxpvumm" path="res://scenes/LogicGates/Level2.tscn" id="3_3f6ub"]
+[ext_resource type="PackedScene" uid="uid://1rry81l46ffo" path="res://scenes/Multiplexer/MultiplexLevel.tscn" id="4_d764y"]
 
 [sub_resource type="Gradient" id="Gradient_hpoc2"]
 colors = PackedColorArray(0.489218, 0.577116, 0.814937, 1, 0.863987, 0.865142, 0.950427, 1)
@@ -23,6 +26,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hc3ww")
+level1Scene = ExtResource("2_smkmx")
+level2Scene = ExtResource("3_3f6ub")
+level3Scene = ExtResource("4_d764y")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

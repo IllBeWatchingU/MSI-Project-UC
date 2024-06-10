@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://c3sm4fytn8mcq"]
+
+[ext_resource type="Script" path="res://scenes/LogicGates/CheckButton.gd" id="1_7wf0d"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_aaa84"]
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_icgkj"]
+size = Vector3(0.25, 0.05, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5tfqr"]
+size = Vector3(0.27, 0.9, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uqj5w"]
+albedo_color = Color(0.788235, 0.0392157, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_klxii"]
+material = SubResource("StandardMaterial3D_uqj5w")
+top_radius = 0.08
+bottom_radius = 0.08
+height = 0.05
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_opofc"]
+height = 0.05
+radius = 0.08
+
+[node name="CheckButton" type="StaticBody3D"]
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.766044, -0.642788, 0, 0.642788, 0.766044, 0, 0.832, 0.02)
+
+[node name="Stand" type="Node3D" parent="."]
+
+[node name="Pole" type="MeshInstance3D" parent="Stand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+mesh = SubResource("CylinderMesh_aaa84")
+
+[node name="Plate" type="MeshInstance3D" parent="Stand"]
+transform = Transform3D(1, 0, 0, 0, 0.766044, -0.642788, 0, 0.642788, 0.766044, 0, 0.799767, 0)
+mesh = SubResource("BoxMesh_icgkj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.455, 0)
+shape = SubResource("BoxShape3D_5tfqr")
+
+[node name="Button" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.766044, -0.642788, 0, 0.642788, 0.766044, 0, 0.832, 0.02)
+collision_layer = 3
+script = ExtResource("1_7wf0d")
+
+[node name="InteractMesh" type="MeshInstance3D" parent="Button"]
+mesh = SubResource("CylinderMesh_klxii")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Button"]
+shape = SubResource("CylinderShape3D_opofc")
+
+[connection signal="interacted" from="Button" to="Button" method="_on_interacted"]

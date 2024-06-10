@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://dgkxfywcxbkjq"]
+
+[ext_resource type="Script" path="res://scenes/LogicGates/Inlet.gd" id="1_lajld"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0nx52"]
+size = Vector3(0.303452, 0.303894, 0.153053)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pqc4p"]
+size = Vector3(0.3, 0.3, 0.15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cjjrm"]
+size = Vector3(0.102248, 0.055481, 0.0547752)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ylgh3"]
+size = Vector3(0.1, 0.05, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wc8cf"]
+albedo_color = Color(0.196078, 0.196078, 1, 1)
+
+[node name="BoardOutput" type="StaticBody3D"]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000816345, -0.000274658, -0.000652313)
+shape = SubResource("BoxShape3D_0nx52")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_pqc4p")
+
+[node name="Inlet" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0)
+collision_layer = 3
+script = ExtResource("1_lajld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Inlet"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00189327, 0.00137329, -1.90735e-06)
+shape = SubResource("BoxShape3D_cjjrm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Inlet"]
+mesh = SubResource("BoxMesh_ylgh3")
+surface_material_override/0 = SubResource("StandardMaterial3D_wc8cf")
+
+[connection signal="interacted" from="Inlet" to="Inlet" method="_on_interacted"]
