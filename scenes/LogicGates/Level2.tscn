@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://c8ub5prxpvumm"]
 
-[ext_resource type="PackedScene" uid="uid://l2q8vmjedkst" path="res://scenes/Core/Player.tscn" id="1_6g15r"]
 [ext_resource type="Script" path="res://scenes/LogicGates/Level2.gd" id="1_sqi2j"]
+[ext_resource type="PackedScene" uid="uid://cvwt64idjbb5l" path="res://scenes/LogicGates/Level2Player.tscn" id="2_ayh7c"]
 [ext_resource type="PackedScene" uid="uid://lbbq2av2o8bj" path="res://scenes/LogicGates/BoardInput.tscn" id="3_ac2p1"]
 [ext_resource type="Texture2D" uid="uid://mcpasq1rq5iv" path="res://assets/textures/wood_floor_diff_4k.png" id="3_gaya5"]
 [ext_resource type="PackedScene" uid="uid://cis8glfj47vl6" path="res://scenes/LogicGates/Board.tscn" id="3_xl3t5"]
@@ -44,8 +44,7 @@ points = PackedVector3Array(5, 1.5, 0.25, 5, 1.5, -0.25, -5, 1.5, 0.25, 5, -1.5,
 script = ExtResource("1_sqi2j")
 levelName = "level_2"
 
-[node name="Player" parent="." instance=ExtResource("1_6g15r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+[node name="Player" parent="." instance=ExtResource("2_ayh7c")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.574034, 0.818831, 0, -0.818831, 0.574034, 0, 3.2063, 3.81144)

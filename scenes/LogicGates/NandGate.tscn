@@ -11,11 +11,11 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 
-func _on_interacted(interactor):
+func _on_interacted(_interactor):
 	var nand_gate = get_parent()
 	var board = nand_gate.get_parent()
 	var wires_to_remove = []
@@ -24,7 +24,10 @@ func _on_interacted(interactor):
 			if wire.input == nand_gate.find_child(\"InputA\") or wire.input == nand_gate.find_child(\"InputB\") or wire.output == nand_gate.find_child(\"Output\"):
 				wires_to_remove.append(wire)
 	for wire in wires_to_remove:
-		wire.input.wire = null
+		wire.input.wires = []
+		wire.input.update_signal_value()
+		wire.output.wires = []
+		wire.output.update_signal_value()
 		board.wires.erase(wire)
 		wire.queue_free()
 	nand_gate.queue_free()
@@ -37,7 +40,7 @@ size = Vector3(0.399281, 0.298981, 0.100639)
 size = Vector3(0.2, 0.3, 0.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_110ae"]
-albedo_color = Color(0.498039, 1, 1, 1)
+albedo_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_js3d0"]
 top_radius = 0.15
@@ -45,7 +48,7 @@ bottom_radius = 0.15
 height = 0.1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_34b8k"]
-albedo_color = Color(0.498039, 1, 1, 1)
+albedo_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_wf86b"]
 top_radius = 0.04
@@ -53,7 +56,7 @@ bottom_radius = 0.04
 height = 0.1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ppunn"]
-albedo_color = Color(0.498039, 1, 1, 1)
+albedo_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nkxw7"]
 size = Vector3(0.116174, 0.0759339, 0.0814881)
@@ -115,7 +118,7 @@ script = ExtResource("1_xw4lu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0079411, -3.09199e-06, -0.000894257)
 shape = SubResource("BoxShape3D_nkxw7")
 
-[node name="InputA" type="MeshInstance3D" parent="InputA"]
+[node name="InteractMesh" type="MeshInstance3D" parent="InputA"]
 mesh = SubResource("BoxMesh_e26k8")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_0rupa")
@@ -129,7 +132,7 @@ script = ExtResource("1_xw4lu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00823861, 0.00242157, 0.00207901)
 shape = SubResource("BoxShape3D_bflbp")
 
-[node name="InputB" type="MeshInstance3D" parent="InputB"]
+[node name="InteractMesh" type="MeshInstance3D" parent="InputB"]
 mesh = SubResource("BoxMesh_e26k8")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_6sd0o")
@@ -144,7 +147,7 @@ display_text = "Attach Wire"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00140589, -0.00106769, 0.00115646)
 shape = SubResource("BoxShape3D_xcqxp")
 
-[node name="Output" type="MeshInstance3D" parent="Output"]
+[node name="InteractMesh" type="MeshInstance3D" parent="Output"]
 mesh = SubResource("BoxMesh_cxwcx")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_wydm8")

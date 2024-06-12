@@ -9,7 +9,7 @@ size = Vector3(0.199911, 0.0498886, 0.0504761)
 size = Vector3(0.2, 0.05, 0.05)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e057j"]
-albedo_color = Color(1, 0, 0, 1)
+albedo_color = Color(0.196078, 0.196078, 1, 1)
 
 [node name="Wire" type="StaticBody3D"]
 collision_layer = 3
@@ -20,7 +20,7 @@ display_text = "Remove Wire"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.53403e-05, 0.000637054, 3.05176e-05)
 shape = SubResource("BoxShape3D_qkf82")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="InteractMesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_u067j")
 surface_material_override/0 = SubResource("StandardMaterial3D_e057j")
 

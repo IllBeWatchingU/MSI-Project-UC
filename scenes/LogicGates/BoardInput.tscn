@@ -9,14 +9,14 @@ size = Vector3(0.3, 0.3, 0.15)
 [sub_resource type="BoxShape3D" id="BoxShape3D_m2bmk"]
 size = Vector3(0.320578, 0.313889, 0.157814)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_tupof"]
+size = Vector3(0.107033, 0.0574455, 0.0588074)
+
 [sub_resource type="BoxMesh" id="BoxMesh_20f8v"]
 size = Vector3(0.1, 0.05, 0.05)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_caq5r"]
 albedo_color = Color(0.196078, 0.196078, 1, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_tupof"]
-size = Vector3(0.107033, 0.0574455, 0.0588074)
 
 [node name="BoardInput" type="StaticBody3D"]
 collision_layer = 3
@@ -35,12 +35,13 @@ collision_layer = 3
 script = ExtResource("2_ug1q3")
 display_text = "Attach Wire"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Outlet"]
-mesh = SubResource("BoxMesh_20f8v")
-surface_material_override/0 = SubResource("StandardMaterial3D_caq5r")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Outlet"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00177383, 0.0017643, -0.00126648)
 shape = SubResource("BoxShape3D_tupof")
 
+[node name="InteractMesh" type="MeshInstance3D" parent="Outlet"]
+mesh = SubResource("BoxMesh_20f8v")
+surface_material_override/0 = SubResource("StandardMaterial3D_caq5r")
+
+[connection signal="interacted" from="." to="." method="_on_interacted"]
 [connection signal="interacted" from="Outlet" to="Outlet" method="_on_interacted"]

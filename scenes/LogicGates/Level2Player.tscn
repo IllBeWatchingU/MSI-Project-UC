@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvwt64idjbb5l"]
+
+[ext_resource type="PackedScene" uid="uid://l2q8vmjedkst" path="res://scenes/Core/Player.tscn" id="1_7thwm"]
+[ext_resource type="FontFile" uid="uid://b58rhssnirku" path="res://assets/fonts/novem___.ttf" id="2_8wejh"]
+
+[node name="Player" instance=ExtResource("1_7thwm")]
+
+[node name="Level2UI" type="Control" parent="CameraHolder" index="5"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CenterContainer" type="CenterContainer" parent="CameraHolder/Level2UI" index="0"]
+layout_mode = 0
+offset_left = 312.0
+offset_right = 840.0
+offset_bottom = 97.0
+
+[node name="Label" type="Label" parent="CameraHolder/Level2UI/CenterContainer" index="0"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_8wejh")
+theme_override_font_sizes/font_size = 30

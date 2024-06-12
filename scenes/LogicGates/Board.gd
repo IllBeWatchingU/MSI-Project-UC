@@ -1,7 +1,7 @@
 extends "res://scripts/Core/Interactable.gd"
 
 var wires = []
-
+var nand_gates = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,10 +18,8 @@ func _on_interacted(interactor):
 
 
 func place_nand_gate(interactor):
-	var new_gate = load("res://scenes/LogicGates/NandGate.tscn")
-	if new_gate:
-		var instance = new_gate.instantiate()
-		add_child(instance)
-		instance.global_position = interactor.get_collision_point()
-	else:
-		print("Failed to load object scene.")
+	var gate_scene = load("res://scenes/LogicGates/NandGate.tscn")
+	var new_gate = gate_scene.instantiate()
+	add_child(new_gate)
+	self.nand_gates.append(new_gate)
+	new_gate.global_position = interactor.get_collision_point()

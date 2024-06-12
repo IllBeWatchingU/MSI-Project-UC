@@ -36,7 +36,7 @@ script = ExtResource("1_lajld")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00189327, 0.00137329, -1.90735e-06)
 shape = SubResource("BoxShape3D_cjjrm")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Inlet"]
+[node name="InteractMesh" type="MeshInstance3D" parent="Inlet"]
 mesh = SubResource("BoxMesh_ylgh3")
 surface_material_override/0 = SubResource("StandardMaterial3D_wc8cf")
 
